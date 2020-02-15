@@ -1,0 +1,39 @@
+/* pages/index/index.wxss */
+
+.wholepage {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.namepage {
+  margin: 0 80rpx;
+  margin-top: 100rpx;
+  text-align: center;
+  /* vertical-align: middle; *//* height: 60vh; */
+}
+
+.line {
+  margin: 40rpx 0;
+  background-color: #f7f7f7;
+  border-radius: 10rpx;
+  height: 80rpx;
+  border: 2px solid #f7f7f7;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-color: #eee;
+  font-weight: bold;
+  background-color: white;
+}
+
+.join {
+  margin-top: 60rpx;
+  background-color: #f7f7f7;
+  /* border-color: #ffcd43; */
+}

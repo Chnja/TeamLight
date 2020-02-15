@@ -1,0 +1,22 @@
+<!--pages/index/index.wxml-->
+<!-- <text>pages/index/index.wxml</text> -->
+<view wx:if='{{loading==0}}' class='wholepage'>
+  <van-loading color="#1989fa" />
+</view>
+<view wx:elif="{{loading==1}}" class='namepage'>
+  <van-icon name="user-o" size="8rem" />
+  <view class='line' style='margin-top:100rpx;'>
+    <van-field custom-style='background-color:#f7f7f7;padding-left:20rpx' left-icon='manager' clearable placeholder="请输入称呼（≤6）" confirm-type="done" bind:confirm='bindname' maxlength='6' border="{{false}}" bind:change="onChange" bind:change='inputchange' data-name='name' value="{{name}}"
+    />
+  </view>
+  <view class='line button' bindtap="bindname">确定</view>
+</view>
+<view class='namepage' wx:elif="{{loading==2}}">
+  <image src='/img/team.svg' style='width:8rem;height:8rem'></image>
+  <view class='line' style='margin-top:100rpx;'>
+    <van-field custom-style='background-color:#f7f7f7;padding-left:20rpx' left-icon='/img/teamicon.svg' clearable placeholder="团队名（≤10）" confirm-type="done" bind:confirm='bindteam' maxlength='10' border="{{false}}" bind:change="onChange" bind:change='inputchange'
+      data-name='team' value="{{team}}" right-icon='question-o' bind:click-icon='bindjoin'/>
+  </view>
+  <view class='line button' bindtap="bindteam">创建一个团队</view>
+  <view class='line button join' bindtap="bindjoin">加入一个团队</view>
+</view>

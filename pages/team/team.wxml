@@ -1,0 +1,10 @@
+<!--pages/team/team.wxml-->
+<!-- <text>pages/team/team.wxml</text> -->
+<view>
+  <view>我的称呼</view>
+  <view>陈虹嘉</view>
+</view>
+<view>
+  <view>武汉大学</view>
+  <view>团队</view>
+</view>
