@@ -1,26 +1,36 @@
 <!--pages/teamdetail/teamdetail.wxml-->
 <!-- <text>pages/teamdetail/teamdetail.wxml</text> -->
-<view class='detail'>
+<view class='detail' bindtap='bindup'>
   <view class='label'>个人称呼
     <van-icon name="edit" size='0.8rem' />
   </view>
-  <view class='name'>陈虹嘉</view>
+  <view class='name'>{{person.name}}</view>
 </view>
-<van-dropdown-menu>
-  <van-dropdown-item value="{{ value }}" options="{{ option }}" />
-</van-dropdown-menu>
-<view class='detail'>
+<van-popup show="{{ popup }}" position="top" round custom-style="height: 200rpx;padding:40rpx 60rpx 0" bind:close="bindup">
+  <van-field custom-style='background-color:#f7f7f7' left-icon='manager' clearable placeholder="请输入称呼（≤6）" confirm-type="done" bind:confirm='bindname' maxlength='6' border="{{false}}" bind:change='inputchange' data-name='name' value="{{name}}" />
+</van-popup>
+
+
+<view style='margin:-40rpx 0 0'>
+  <van-dropdown-menu>
+    <van-dropdown-item value="{{ teamid }}" options="{{ person.teamlist }}" />
+  </van-dropdown-menu>
+</view>
+<view class='detail' bindtap='bindbottom'>
   <view class='label'>Team Name
     <van-icon name="edit" size='0.8rem' />
   </view>
-  <view class='name'>武汉大学</view>
+  <view class='name'>{{show.name}}</view>
 </view>
+<van-popup show="{{ popbottom }}" position="bottom" round custom-style="height: 200rpx;padding:60rpx" bind:close="bindbottom">
+  <van-field custom-style='background-color:#f7f7f7' left-icon='/img/teamicon.svg' clearable placeholder="队伍名（≤10）" confirm-type="done" bind:confirm='bindteam' maxlength='10' border="{{false}}" bind:change='inputchange' data-name='team' value="{{team}}" />
+</van-popup>
 <view class='detail'>
   <view class='label'>成员列表</view>
-  <view class='people'>
+  <view class='people' wx:for="{{show.peoplelist}}" wx:key="index">
     <view class='icon'>
       <image src='/img/user.svg' style='width:100%;height:100%;margin-top:8rpx'></image>
     </view>
-    <view>陈虹嘉</view>
+    <view style='{{show.people[item].openid==person.openid?"color:#4b8bf4":""}}'>{{show.people[item].name}}</view>
   </view>
 </view>

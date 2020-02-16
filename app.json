@@ -3,8 +3,7 @@
     "pages/index/index",
     "pages/team/team",
     "pages/teamdetail/teamdetail",
-    "pages/mission/mission",
-    "pages/addmission/addmission"
+    "pages/mission/mission"
   ],
   "window": {
     "backgroundTextStyle": "dark",
