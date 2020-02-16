@@ -7,7 +7,7 @@
     "pages/addmission/addmission"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "团队协作Light",
     "navigationBarTextStyle": "black"

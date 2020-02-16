@@ -26,11 +26,24 @@
   margin-right: 20rpx;
 }
 
+.subtitle {
+  margin: 30rpx 50rpx 0;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #bbbec4;
+}
+
 .card {
-  margin: 20rpx 30rpx;
+  margin: 20rpx 20rpx;
   border-radius: 15rpx;
-  box-shadow: 0 0 20rpx #eee;
+  box-shadow: 0 0 20rpx #dddee1;
   padding: 20rpx 30rpx;
+}
+
+.delete {
+  /* opacity: 0.3; */
+  box-shadow: 0 0 20rpx #e9eaec;
+  color: #dddee1;
 }
 
 .titlebox {
@@ -39,7 +52,7 @@
 }
 
 .title {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
@@ -65,4 +78,13 @@
   color: #dd5246;
   font-weight: bold;
   /* background-color: #dd5246; */
+}
+
+.buttonarea {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 720rpx;
+  height: 120rpx;
+  justify-content: flex-end;
 }

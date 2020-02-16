@@ -43,6 +43,6 @@ App({
   },
   globalData: {
     // userInfo: null
-    person: {}
+    // person: {}
   }
 })

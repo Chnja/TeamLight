@@ -1,22 +1,44 @@
 <!--pages/team/team.wxml-->
 <!-- <text>pages/team/team.wxml</text> -->
-<navigator hover-class="none" url='/pages/teamdetail/teamdetail'>
-  <view class='teamcard'>
-    <view class='teamlabel'>Team:</view>
-    <view class='teamname'>武汉大学（8）</view>
-    <van-icon name="weapp-nav" custom-class='more' />
-  </view>
-</navigator>
-
-<view class='cardlist'>
-  <van-swipe-cell right-width="{{ 65 }}">
-    <view class='card'>
-      <view class='titlebox'>
-        <view class='title'>产品调研</view>
-        <view>2020-2-15</view>
-      </view>
-      <view class='detail'>这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成</view>
-    </view>
-    <view slot="right" class="van-swipe-cell-right">删除</view>
-  </van-swipe-cell>
+<view class='teamcard' bindtap="bindteam">
+  <view class='teamlabel'>Team:</view>
+  <view class='teamname'>{{team.name}}（{{team.people.length}}）</view>
+  <van-icon name="weapp-nav" custom-class='more' />
 </view>
+
+<!-- <view class='cardlist'> -->
+<!-- <view class='subtitle'>进行中</view> -->
+<van-divider contentPosition="left" custom-style='margin:30rpx 20rpx 0'>进行中</van-divider>
+<van-swipe-cell right-width="{{ 65 }}" wx:for='{{unfinished}}' wx:key='index'>
+  <view class='card'>
+    <view class='titlebox'>
+      <view class='title'>{{item.name}}</view>
+      <view>{{item.date}}</view>
+    </view>
+    <text class='detail'>{{item.detail}}</text>
+  </view>
+  <view slot="right" class="van-swipe-cell-right" bindtap="binddelete" data-id='{{item._id}}'>删除</view>
+</van-swipe-cell>
+
+<van-divider contentPosition="left" custom-style='margin:30rpx 20rpx 0'>已完成</van-divider>
+<van-swipe-cell right-width="{{ 65 }}" wx:for='{{finished}}' wx:key='index'>
+  <view class='card delete'>
+    <view class='titlebox'>
+      <view class='title'>{{item.name}}</view>
+      <view>{{item.date}}</view>
+    </view>
+    <text class='detail' style='color: #dddee1;'>{{item.detail}}</text>
+  </view>
+  <view slot="right" class="van-swipe-cell-right" bindtap="binddelete" data-id='{{item._id}}'>删除</view>
+</van-swipe-cell>
+<!-- </view> -->
+
+<view style='height:140rpx;'></view>
+<view class='buttonarea'>
+  <van-button bind:click='bindadd' round color="#80848f" type="default" icon='add'>添加任务</van-button>
+</view>
+
+<van-popup show="{{ popshow }}" position="bottom" round custom-style="height: 61.8%;" bind:close="bindadd">
+  <view style='height:60rpx;'></view>
+  <addmission id='addmission' bind:confirm="bindaddmission" name="{{popdata.name}}" detail="{{popdata.detail}}"></addmission>
+</van-popup>

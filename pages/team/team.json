@@ -1,5 +1,9 @@
 {
   "usingComponents": {
-    "van-swipe-cell": "../../miniprogram_npm/@vant/weapp/swipe-cell/index"
-  }
+    "van-swipe-cell": "../../miniprogram_npm/@vant/weapp/swipe-cell/index",
+    "van-popup": "../../miniprogram_npm/@vant/weapp/popup/index",
+    "addmission": "../../cui/addmission/index",
+    "van-divider": "../../miniprogram_npm/@vant/weapp/divider/index"
+  },
+  "enablePullDownRefresh": true
 }

@@ -60,7 +60,7 @@ Page({
   onLoad: function(options) {
     var that = this
     cweb.cpost('/launch', {}, false).then(res => {
-      getApp().globalData.person = res
+      // getApp().globalData.person = res
       if (res.code == '1000') {
         that.setData({
           loading: 1
