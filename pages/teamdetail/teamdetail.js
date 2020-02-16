@@ -15,6 +15,15 @@ Page({
     team: ''
   },
 
+  dropchange(e) {
+    // console.log(e)
+    teamid = e.detail
+    this.setData({
+      teamid: teamid
+    })
+    this.loadfun()
+  },
+
   bindname() {
     var that = this
     cweb.cpost('/personname', {
@@ -121,10 +130,15 @@ Page({
       cweb.cpost('/teampeople', {
         'teamid': teamid
       }).then(res => {
-        that.setData({
-          show: res
-        })
-        resolve()
+        if (res.code == 1001) {
+          that.setData({
+            show: res
+          })
+          resolve()
+        } else {
+          that.loadperson()
+          reject()
+        }
       })
     })
   },

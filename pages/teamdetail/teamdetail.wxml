@@ -10,12 +10,12 @@
   <van-field custom-style='background-color:#f7f7f7' left-icon='manager' clearable placeholder="请输入称呼（≤6）" confirm-type="done" bind:confirm='bindname' maxlength='6' border="{{false}}" bind:change='inputchange' data-name='name' value="{{name}}" />
 </van-popup>
 
-
 <view style='margin:-40rpx 0 0'>
   <van-dropdown-menu>
-    <van-dropdown-item value="{{ teamid }}" options="{{ person.teamlist }}" />
+    <van-dropdown-item value="{{ teamid }}" bind:change='dropchange' options="{{ person.teamlist }}" />
   </van-dropdown-menu>
 </view>
+
 <view class='detail' bindtap='bindbottom'>
   <view class='label'>Team Name
     <van-icon name="edit" size='0.8rem' />
@@ -23,7 +23,8 @@
   <view class='name'>{{show.name}}</view>
 </view>
 <van-popup show="{{ popbottom }}" position="bottom" round custom-style="height: 200rpx;padding:60rpx" bind:close="bindbottom">
-  <van-field custom-style='background-color:#f7f7f7' left-icon='/img/teamicon.svg' clearable placeholder="队伍名（≤10）" confirm-type="done" bind:confirm='bindteam' maxlength='10' border="{{false}}" bind:change='inputchange' data-name='team' value="{{team}}" />
+  <van-field custom-style='background-color:#f7f7f7' left-icon='/img/teamicon.svg' clearable placeholder="队伍名（≤10）" confirm-type="done" bind:confirm='bindteam' maxlength='10' border="{{false}}" bind:change='inputchange' data-name='team' value="{{team}}"
+  />
 </van-popup>
 <view class='detail'>
   <view class='label'>成员列表</view>
@@ -34,3 +35,5 @@
     <view style='{{show.people[item].openid==person.openid?"color:#4b8bf4":""}}'>{{show.people[item].name}}</view>
   </view>
 </view>
+
+<view class='button' bindtap="bindbutton">{{show.peoplelist[0]==person.openid?"解散":"离开"}}团队</view>

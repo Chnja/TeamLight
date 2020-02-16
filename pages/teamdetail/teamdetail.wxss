@@ -28,3 +28,15 @@
   overflow: hidden;
   margin-right: 20rpx;
 }
+
+.button {
+  margin: 60rpx;
+  border-radius: 10rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-color: #eee;
+  font-weight: bold;
+  background-color: #eee;
+}
