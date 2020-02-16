@@ -60,6 +60,7 @@ Page({
   onLoad: function(options) {
     var that = this
     cweb.cpost('/launch', {}, false).then(res => {
+      getApp().globalData.person = res
       if (res.code == '1000') {
         that.setData({
           loading: 1
@@ -69,8 +70,12 @@ Page({
           loading: 2
         })
       } else {
+        var teamid = wx.getStorageSync('teamid')
+        if ((teamid == '') | (res.teamidlist.indexOf(teamid) == -1)) {
+          teamid = res.teamidlist[0]
+        }
         wx: wx.redirectTo({
-          url: '/pages/team/team',
+          url: '/pages/team/team?teamid=' + teamid,
           success: function(res) {},
           fail: function(res) {},
           complete: function(res) {},

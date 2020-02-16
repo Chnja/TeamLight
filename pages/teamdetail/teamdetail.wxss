@@ -1,0 +1,30 @@
+/* pages/teamdetail/teamdetail.wxss */
+
+.detail {
+  margin: 40rpx 60rpx;
+}
+
+.label {
+  font-weight: bold;
+  color: #bbbec4;
+  font-size: 0.8rem;
+  margin-bottom: 10rpx;
+}
+
+.people {
+  display: flex;
+  align-items: center;
+  margin: 20rpx 0;
+  border-radius: 10rpx;
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  /* padding-top: 10rpx; */
+  border-radius: 100%;
+  background-color: #f3f3f3;
+  border: 2px solid #bbbec4;
+  overflow: hidden;
+  margin-right: 20rpx;
+}

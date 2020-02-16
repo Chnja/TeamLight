@@ -42,13 +42,49 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
-		"miniprogram": {
+		"gamePlugin": {
 			"current": -1,
 			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "team",
+					"pathName": "pages/team/team",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "teamdetail",
+					"pathName": "pages/teamdetail/teamdetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "mission",
+					"pathName": "pages/mission/mission",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "addmission",
+					"pathName": "pages/addmission/addmission",
+					"scene": null
+				}
+			]
 		}
 	}
 }

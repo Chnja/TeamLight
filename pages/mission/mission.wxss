@@ -1,0 +1,46 @@
+/* pages/mission/mission.wxss */
+
+.detail {
+  margin: 40rpx 60rpx;
+}
+
+.label {
+  font-weight: bold;
+  color: #bbbec4;
+  font-size: 0.8rem;
+  margin-bottom: 10rpx;
+}
+
+.name {
+  text-align: justify;
+  word-break: break-all;
+}
+
+.tip {
+  display: flex;
+  align-items: center;
+  margin: 20rpx 0;
+}
+
+.whos {
+  text-align: center;
+  font-weight: bold;
+  margin-right: 20rpx;
+  min-width: 3rem;
+}
+
+.date {
+  font-weight: normal;
+  font-size: 0.6rem;
+  color: #80848f;
+}
+
+.content {
+  text-align: justify;
+  word-break: break-all;
+  padding: 20rpx;
+  font-size: 0.9rem;
+  border-radius: 15rpx;
+  background-color: #f6f6f6;
+  /* max-width:  */
+}

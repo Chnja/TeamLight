@@ -1,7 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/team/team"
+    "pages/team/team",
+    "pages/teamdetail/teamdetail",
+    "pages/mission/mission",
+    "pages/addmission/addmission"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -9,5 +12,10 @@
     "navigationBarTitleText": "团队协作Light",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-field": "/miniprogram_npm/@vant/weapp/field/index",
+    "van-button": "/miniprogram_npm/@vant/weapp/button/index",
+    "van-icon": "/miniprogram_npm/@vant/weapp/icon/index"
+  }
 }

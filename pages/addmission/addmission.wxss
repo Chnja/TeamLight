@@ -1,0 +1,17 @@
+/* pages/addmission/addmission.wxss */
+
+.main {
+  margin: 40rpx 60rpx;
+}
+
+.button {
+  margin: 40rpx 0;
+  border-radius: 10rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-color: #eee;
+  font-weight: bold;
+  background-color: #eee;
+}

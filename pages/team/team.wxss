@@ -1,1 +1,68 @@
 /* pages/team/team.wxss */
+
+.teamcard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15rpx;
+  margin: 20rpx;
+  background-color: #f6f6f6;
+  border-radius: 10rpx;
+  position: relative;
+}
+
+.more {
+  position: absolute !important;
+  right: 30rpx;
+}
+
+.teamname {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.teamlabel {
+  font-size: 0.8rem;
+  margin-right: 20rpx;
+}
+
+.card {
+  margin: 20rpx 30rpx;
+  border-radius: 15rpx;
+  box-shadow: 0 0 20rpx #eee;
+  padding: 20rpx 30rpx;
+}
+
+.titlebox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.detail {
+  font-size: 0.8rem;
+  color: #80848f;
+  text-overflow: ellipsis;
+  text-align: justify;
+  /* white-space: nowrap; */
+  overflow: hidden;
+  margin: 20rpx 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.van-swipe-cell-right {
+  width: 65px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #dd5246;
+  font-weight: bold;
+  /* background-color: #dd5246; */
+}

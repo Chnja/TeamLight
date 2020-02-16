@@ -1,0 +1,9 @@
+<!--pages/addmission/addmission.wxml-->
+<!-- <text>pages/addmission/addmission.wxml</text> -->
+<view class='main'>
+  <van-field custom-style='background-color:#f7f7f7;padding-left:20rpx;margin:40rpx 0' left-icon='todo-list' clearable placeholder="任务名" maxlength='10' border="{{false}}" bind:change="onChange" bind:change='inputchange' data-name='team' value="{{team}}"
+  />
+  <van-field custom-style='background-color:#f7f7f7;padding-left:20rpx;margin:40rpx 0' left-icon='wap-nav' clearable type='textarea' autosize show-confirm-bar='{{false}}' placeholder="任务详情" border="{{false}}" bind:change="onChange" bind:change='inputchange'
+    data-name='team' value="{{team}}" />
+  <view class='button' bindtap="bindteam">创建任务</view>
+</view>

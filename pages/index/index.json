@@ -1,7 +1,5 @@
 {
   "usingComponents": {
-    "van-loading": "../../miniprogram_npm/@vant/weapp/loading/index",
-    "van-icon": "../../miniprogram_npm/@vant/weapp/icon/index",
-    "van-field": "../../miniprogram_npm/@vant/weapp/field/index"
+    "van-loading": "../../miniprogram_npm/@vant/weapp/loading/index"
   }
 }

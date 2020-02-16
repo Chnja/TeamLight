@@ -1,0 +1,28 @@
+<!--pages/mission/mission.wxml-->
+<!-- <text>pages/mission/mission.wxml</text> -->
+<view class='detail'>
+  <view class='label'>任务名称
+    <van-icon name="edit" size='0.8rem'/>
+  </view>
+  <view class='name'>产品调研</view>
+</view>
+<view class='detail'>
+  <view class='label'>任务详情
+    <van-icon name="edit" size='0.8rem' />
+  </view>
+  <view class='name'>这个任务要抓紧时间完成这个任务要strsrgdgfthfyufyfgjy抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成</view>
+</view>
+<view class='detail'>
+  <view class='label'>Tips</view>
+  <view class='tip' wx:for='124'>
+    <view class='whos'>
+      <view>陈虹嘉</view>
+      <view class='date'>2020-2-16</view>
+    </view>
+    <view class='content'>第一步应该从探索用户的真正需求起步</view>
+  </view>
+  <van-button round size='mini' icon='plus' color='#bbbec4'>Tips</van-button>
+</view>
+<view style='margin:60rpx 40rpx;'>
+  <van-button type="primary" size='large'>确认完成</van-button>
+</view>
