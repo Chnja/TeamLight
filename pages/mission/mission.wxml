@@ -1,14 +1,15 @@
 <!--pages/mission/mission.wxml-->
 <!-- <text>pages/mission/mission.wxml</text> -->
-<view class='detail' bindtap="bindedit">
+<image wx:if="{{mission.finish==1}}" src='/img/finish.svg' class='finish'></image>
+<view class='detail' bindtap="{{mission.finish==1?'':'bindedit'}}">
   <view class='label'>任务名称
-    <van-icon name="edit" size='0.8rem' />
+    <van-icon wx:if="{{mission.finish!=1}}" name="edit" size='0.8rem' />
   </view>
   <view class='name'>{{mission.name}}</view>
 </view>
-<view class='detail' bindtap="bindedit">
+<view class='detail' bindtap="{{mission.finish==1?'':'bindedit'}}">
   <view class='label'>任务详情
-    <van-icon name="edit" size='0.8rem' />
+    <van-icon wx:if="{{mission.finish!=1}}" name="edit" size='0.8rem' />
   </view>
   <text class='name'>{{mission.detail}}</text>
 </view>
@@ -19,14 +20,18 @@
 
 <view class='detail'>
   <view class='label'>Tips</view>
-  <view class='tip' wx:for='{{mission.tiplist}}' wx:key='index'>
-    <view class='whos'>
-      <view>{{item.personname}}</view>
-      <view class='date'>{{item.dateshow}}</view>
+  <van-swipe-cell left-width="{{ 40 }}" wx:for='{{mission.tiplist}}' wx:key='index'>
+    <view class='tip'>
+      <view class='whos'>
+        <view>{{item.personname}}</view>
+        <view class='date'>{{item.dateshow}}</view>
+      </view>
+      <view class='content'>{{item.content}}</view>
     </view>
-    <view class='content'>{{item.content}}</view>
-  </view>
-  
+    <view slot="left" class="van-swipe-cell-left" bindtap="binddelete" data-id='{{item.date}}'>
+      <van-icon size='1.2rem' name="clear" />
+    </view>
+  </van-swipe-cell>
   <van-button wx:if='{{mission.finish!=1}}' bind:click='bindtip' round size='mini' icon='plus' color='#bbbec4'>Tips</van-button>
 </view>
 <van-popup show="{{ tipshow }}" position="bottom" round custom-style="height: 200rpx;padding:40rpx;" bind:close="bindtip">
@@ -36,5 +41,5 @@
 
 
 <view wx:if='{{mission.finish!=1}}' style='margin:60rpx 40rpx;'>
-  <van-button type="primary" size='large'>确认完成</van-button>
+  <van-button type="primary" size='large' bindtap="bindfinish">确认完成</van-button>
 </view>

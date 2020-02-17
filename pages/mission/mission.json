@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "van-popup": "../../miniprogram_npm/@vant/weapp/popup/index",
-    "addmission": "../../cui/addmission/index"
+    "addmission": "../../cui/addmission/index",
+    "van-swipe-cell": "../../miniprogram_npm/@vant/weapp/swipe-cell/index"
   }
 }

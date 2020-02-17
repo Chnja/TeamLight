@@ -1,5 +1,13 @@
 /* pages/mission/mission.wxss */
 
+.finish {
+  position: absolute;
+  right: 80rpx;
+  top: 30rpx;
+  width: 180rpx;
+  height: 180rpx;
+}
+
 .detail {
   margin: 40rpx 60rpx;
 }
@@ -43,4 +51,15 @@
   border-radius: 15rpx;
   background-color: #f6f6f6;
   /* max-width:  */
+}
+
+.van-swipe-cell-left {
+  width: 40px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #dd5246;
+  font-weight: bold;
+  /* background-color: #dd5246; */
 }

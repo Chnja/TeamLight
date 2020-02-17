@@ -31,6 +31,26 @@ Page({
     })
   },
 
+  bindfinish() {
+    var that = this
+    cweb.cpost('/missionfinish', {
+      state: 1,
+      missionid: missionid
+    }).then(() => {
+      that.loadfun()
+    })
+  },
+
+  binddelete(e) {
+    var that = this
+    cweb.cpost('/deltip', {
+      missionid: missionid,
+      tipdate: e.currentTarget.dataset.id
+    }).then(() => {
+      that.loadfun()
+    })
+  },
+
   bindeditconfirm(e) {
     var that = this
     cweb.cpost('/missionedit', {
