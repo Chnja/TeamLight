@@ -15,6 +15,17 @@ Page({
     team: {}
   },
 
+  bindfinish(e) {
+    // console.log(e.currentTarget.dataset.finish)
+    var that = this
+    cweb.cpost('/missionfinish', {
+      missionid: e.currentTarget.dataset.id,
+      state: e.currentTarget.dataset.finish
+    }).then(() => {
+      that.loadfun()
+    })
+  },
+
   bindmission(e) {
     wx: wx.navigateTo({
       url: '/pages/mission/mission?teamid=' + teamid + '&missionid=' + e.currentTarget.dataset.id,
@@ -62,6 +73,14 @@ Page({
       id: e.currentTarget.dataset.id
     }).then(res => {
       that.loadfun()
+    })
+  },
+
+  bindline(){
+    wx:wx.showModal({
+      title: '提示',
+      content: '长按快速切换任务状态，左划删除任务',
+      showCancel: false,
     })
   },
 

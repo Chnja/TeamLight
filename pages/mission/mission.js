@@ -81,57 +81,72 @@ Page({
     })
   },
 
+  bindline() {
+    wx: wx.showModal({
+      title: '提示',
+      content: '右划删除Tips',
+      showCancel: false,
+    })
+  },
+
   loadfun() {
     var that = this
-    cweb.cpost('/teampeople', {
-      teamid: teamid
-    }).then(res => {
-      if (res.code == 1000) {
-        wx: wx.reLaunch({
-          url: '/pages/index/index',
-          success: function(res) {},
-          fail: function(res) {},
-          complete: function(res) {},
-        })
-      }
-      else {
-        teampeople = res
-        that.loadfun2()
-      }
+    return new Promise(function(resolve, reject) {
+      cweb.cpost('/teampeople', {
+        teamid: teamid
+      }).then(res => {
+        if (res.code == 1000) {
+          wx: wx.reLaunch({
+            url: '/pages/index/index',
+            success: function(res) {},
+            fail: function(res) {},
+            complete: function(res) {},
+          })
+        }
+        else {
+          teampeople = res
+          that.loadfun2().then(() => {
+            resolve()
+          })
+        }
+      })
     })
   },
 
   loadfun2() {
     var that = this
-    cweb.cpost('/missiondetail', {
-      missionid: missionid
-    }).then(res => {
-      if (res.code == 1000) {
-        wx: wx.navigateBack({
-          delta: 1,
-        })
-      }
-      else {
-        var mission = res
-        mission.tiplist = []
-        for (var i in mission.tips) {
-          mission.tips[i] = JSON.parse(mission.tips[i])
-          let x = mission.tips[i]
-          x.dateshow = util.formatTime(new Date(x.date * 1000))
-          try {
-            x.personname = teampeople.people[x.openid].name
-          } catch (e) {
-            x.personname = ''
-          }
-          mission.tiplist.push(x)
+    return new Promise(function(resolve, reject) {
+      cweb.cpost('/missiondetail', {
+        missionid: missionid
+      }).then(res => {
+        if (res.code == 1000) {
+          wx: wx.navigateBack({
+            delta: 1,
+          })
         }
-        mission.tiplist.sort(function(a, b) {
-          return a.date - b.date
-        })
-        that.setData({
-          mission: mission
-        })
-      }
+        else {
+          var mission = res
+          mission.tiplist = []
+          for (var i in mission.tips) {
+            mission.tips[i] = JSON.parse(mission.tips[i])
+            let x = mission.tips[i]
+            x.dateshow = util.formatTime(new Date(x.date * 1000))
+            try {
+              x.personname = teampeople.people[x.openid].name
+            } catch (e) {
+              x.personname = ''
+            }
+            mission.tiplist.push(x)
+          }
+          mission.tiplist.sort(function(a, b) {
+            return a.date - b.date
+          })
+          that.setData({
+            mission: mission
+          })
+          resolve()
+        }
+      })
     })
   },
 
@@ -176,7 +191,11 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    wx.showNavigationBarLoading()
+    this.loadfun().then(res => {
+      wx.stopPullDownRefresh()
+      wx.hideNavigationBarLoading()
+    })
   },
 
   /**

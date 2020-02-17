@@ -19,7 +19,9 @@
 </van-popup>
 
 <view class='detail'>
-  <view class='label'>Tips</view>
+  <view class='label' bindtap="bindline">Tips
+    <van-icon custom-style='margin-left:5rpx' size='0.8rem' name="question-o" />
+  </view>
   <van-swipe-cell left-width="{{ 40 }}" wx:for='{{mission.tiplist}}' wx:key='index'>
     <view class='tip'>
       <view class='whos'>
