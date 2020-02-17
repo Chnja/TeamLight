@@ -1,28 +1,40 @@
 <!--pages/mission/mission.wxml-->
 <!-- <text>pages/mission/mission.wxml</text> -->
-<view class='detail'>
+<view class='detail' bindtap="bindedit">
   <view class='label'>任务名称
-    <van-icon name="edit" size='0.8rem'/>
+    <van-icon name="edit" size='0.8rem' />
   </view>
-  <view class='name'>产品调研</view>
+  <view class='name'>{{mission.name}}</view>
 </view>
-<view class='detail'>
+<view class='detail' bindtap="bindedit">
   <view class='label'>任务详情
     <van-icon name="edit" size='0.8rem' />
   </view>
-  <text class='name'>这个任务要抓紧时间完成这个任务要strsrgdgfthfyufyfgjy抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成</text>
+  <text class='name'>{{mission.detail}}</text>
 </view>
+<van-popup show="{{ popshow }}" position="top" round custom-style="height: 61.8%;" bind:close="bindedit">
+  <view style='height:20rpx;'></view>
+  <addmission id='addmission' bind:confirm="bindeditconfirm" name="{{popdata.name}}" detail="{{popdata.detail}}" bname='修改'></addmission>
+</van-popup>
+
 <view class='detail'>
   <view class='label'>Tips</view>
-  <view class='tip' wx:for='124'>
+  <view class='tip' wx:for='{{mission.tiplist}}' wx:key='index'>
     <view class='whos'>
-      <view>陈虹嘉</view>
-      <view class='date'>2020-2-16</view>
+      <view>{{item.personname}}</view>
+      <view class='date'>{{item.dateshow}}</view>
     </view>
-    <view class='content'>第一步应该从探索用户的真正需求起步</view>
+    <view class='content'>{{item.content}}</view>
   </view>
-  <van-button round size='mini' icon='plus' color='#bbbec4'>Tips</van-button>
+  
+  <van-button wx:if='{{mission.finish!=1}}' bind:click='bindtip' round size='mini' icon='plus' color='#bbbec4'>Tips</van-button>
 </view>
-<view style='margin:60rpx 40rpx;'>
+<van-popup show="{{ tipshow }}" position="bottom" round custom-style="height: 200rpx;padding:40rpx;" bind:close="bindtip">
+  <view style='height:20rpx;'></view>
+  <van-field custom-style='background-color:#f7f7f7;padding-left:20rpx;' left-icon='medal' clearable placeholder="Tips" border="{{false}}" bind:confirm="handletip" value="{{tips}}" />
+</van-popup>
+
+
+<view wx:if='{{mission.finish!=1}}' style='margin:60rpx 40rpx;'>
   <van-button type="primary" size='large'>确认完成</van-button>
 </view>

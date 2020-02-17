@@ -11,6 +11,10 @@ Component({
     detail: {
       type: String,
       value: ""
+    },
+    bname:{
+      type: String,
+      value: "创建"
     }
   },
 

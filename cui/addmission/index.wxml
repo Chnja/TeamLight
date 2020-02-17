@@ -4,5 +4,5 @@
   <van-field custom-style='background-color:#f7f7f7;padding-left:20rpx;margin:40rpx 0' left-icon='todo-list' clearable placeholder="任务名" maxlength='10' border="{{false}}" bind:change="onChange" data-name='name' value="{{name}}" />
   <van-field custom-style='background-color:#f7f7f7;padding-left:20rpx;margin:40rpx 0' left-icon='wap-nav' clearable type='textarea' autosize show-confirm-bar='{{false}}' placeholder="任务详情" border="{{false}}" bind:change="onChange" data-name='detail' value="{{detail}}"
   />
-  <view class='button' bindtap="bindbutton">创建任务</view>
+  <view class='button' bindtap="bindbutton">{{bname}}任务</view>
 </view>

@@ -1,23 +1,127 @@
 // pages/mission/mission.js
+const cweb = require('../../utils/cweb.js')
+const util = require('../../utils/util.js')
+var teamid = ""
 var missionid = ''
+var teampeople = {}
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    mission: {},
+    popshow: false,
+    tipshow: false,
+    popdata: {},
+    tips: ""
   },
 
-  loadfun(){
-    
+  bindedit() {
+    this.setData({
+      popdata: this.data.mission,
+      popshow: !this.data.popshow
+    })
+  },
+
+  bindtip() {
+    this.setData({
+      tipshow: !this.data.tipshow,
+      tips: ""
+    })
+  },
+
+  bindeditconfirm(e) {
+    var that = this
+    cweb.cpost('/missionedit', {
+      name: e.detail.name,
+      detail: e.detail.detail,
+      missionid: missionid
+    }).then(res => {
+      that.setData({
+        popshow: false
+      })
+      that.loadfun()
+    })
+  },
+
+  handletip(e) {
+    var that = this
+    // console.log(e.detail)
+    var date = new Date()
+    cweb.cpost('/addtip', {
+      missionid: missionid,
+      tip: e.detail
+    }).then(res => {
+      that.setData({
+        tips: "",
+        tipshow: false
+      })
+      that.loadfun()
+    })
+  },
+
+  loadfun() {
+    var that = this
+    cweb.cpost('/teampeople', {
+      teamid: teamid
+    }).then(res => {
+      if (res.code == 1000) {
+        wx: wx.reLaunch({
+          url: '/pages/index/index',
+          success: function(res) {},
+          fail: function(res) {},
+          complete: function(res) {},
+        })
+      }
+      else {
+        teampeople = res
+        that.loadfun2()
+      }
+    })
+  },
+
+  loadfun2() {
+    var that = this
+    cweb.cpost('/missiondetail', {
+      missionid: missionid
+    }).then(res => {
+      if (res.code == 1000) {
+        wx: wx.navigateBack({
+          delta: 1,
+        })
+      }
+      else {
+        var mission = res
+        mission.tiplist = []
+        for (var i in mission.tips) {
+          mission.tips[i] = JSON.parse(mission.tips[i])
+          let x = mission.tips[i]
+          x.dateshow = util.formatTime(new Date(x.date * 1000))
+          try {
+            x.personname = teampeople.people[x.openid].name
+          } catch (e) {
+            x.personname = ''
+          }
+          mission.tiplist.push(x)
+        }
+        mission.tiplist.sort(function(a, b) {
+          return a.date - b.date
+        })
+        that.setData({
+          mission: mission
+        })
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    teamid = options.teamid
     missionid = options.missionid
+    this.loadfun()
   },
 
   /**

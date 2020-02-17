@@ -75,7 +75,7 @@
 					"id": 2,
 					"name": "mission",
 					"pathName": "pages/mission/mission",
-					"query": "missionid=6",
+					"query": "teamid=1&missionid=6",
 					"scene": null
 				},
 				{
