@@ -1,5 +1,6 @@
 // pages/index/index.js
 const cweb = require('../../utils/cweb.js')
+var jointeamid = ""
 Page({
 
   /**
@@ -37,10 +38,28 @@ Page({
     cweb.cpost('/personname', {
       name: name
     }).then(res => {
+      that.handlejoin()
+    })
+  },
+
+  handlejoin() {
+    var that = this
+    if (jointeamid == undefined) {
       that.setData({
         loading: 2
       })
-    })
+    } else {
+      cweb.cpost('/jointeam', {
+        teamid: jointeamid
+      }).then(res => {
+        wx: wx.redirectTo({
+          url: '/pages/team/team?teamid=' + jointeamid,
+          success: function(res) {},
+          fail: function(res) {},
+          complete: function(res) {},
+        })
+      })
+    }
   },
 
   bindjoin() {
@@ -58,6 +77,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    jointeamid = options.teamid
+    console.log(jointeamid)
     var that = this
     cweb.cpost('/launch', {}, false).then(res => {
       // getApp().globalData.person = res
@@ -66,20 +87,22 @@ Page({
           loading: 1
         })
       } else if (res.teamlist.length == 0) {
-        that.setData({
-          loading: 2
-        })
+        that.handlejoin()
       } else {
-        var teamid = wx.getStorageSync('teamid')
-        if ((teamid == '') | (res.teamidlist.indexOf(teamid) == -1)) {
-          teamid = res.teamidlist[0]
+        if (jointeamid != undefined) {
+          that.handlejoin()
+        } else {
+          var teamid = wx.getStorageSync('teamid')
+          if ((teamid == '') | (res.teamidlist.indexOf(teamid) == -1)) {
+            teamid = res.teamidlist[0]
+          }
+          wx: wx.redirectTo({
+            url: '/pages/team/team?teamid=' + teamid,
+            success: function(res) {},
+            fail: function(res) {},
+            complete: function(res) {},
+          })
         }
-        wx: wx.redirectTo({
-          url: '/pages/team/team?teamid=' + teamid,
-          success: function(res) {},
-          fail: function(res) {},
-          complete: function(res) {},
-        })
       }
     })
   },
@@ -129,7 +152,11 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  // onShareAppMessage: function() {
-
-  // }
+  onShareAppMessage: function() {
+    return {
+      title: '和我一起用团队协作Light这个小程序吧！',
+      path: "/pages/index/index",
+      imageUrl: "https://i.loli.net/2020/02/17/WPYNQKZbRVqnkXm.png"
+    }
+  }
 })

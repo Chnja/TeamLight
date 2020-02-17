@@ -128,9 +128,9 @@ Page({
           if (!flag) {
             wx: wx.reLaunch({
               url: '/pages/index/index',
-              success: function (res) { },
-              fail: function (res) { },
-              complete: function (res) { },
+              success: function(res) {},
+              fail: function(res) {},
+              complete: function(res) {},
             })
           }
           that.setData({
@@ -215,6 +215,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
+    return {
+      title: '快加入我的团队（' + this.data.show.name + '）吧！',
+      path: "/pages/index/index?teamid=" + teamid,
+      imageUrl: "https://i.loli.net/2020/02/17/WPYNQKZbRVqnkXm.png"
+    }
   }
 })

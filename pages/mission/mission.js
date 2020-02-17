@@ -209,6 +209,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
+    return {
+      title: '快加入我的团队（' + teampeople.name + '）吧！',
+      path: "/pages/index/index?teamid=" + teamid,
+      imageUrl: "https://i.loli.net/2020/02/17/WPYNQKZbRVqnkXm.png"
+    }
   }
 })

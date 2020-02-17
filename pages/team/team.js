@@ -76,8 +76,8 @@ Page({
     })
   },
 
-  bindline(){
-    wx:wx.showModal({
+  bindline() {
+    wx: wx.showModal({
       title: '提示',
       content: '长按快速切换任务状态，左划删除任务',
       showCancel: false,
@@ -197,6 +197,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
+    return {
+      title: '快加入我的团队（' + this.data.team.name + '）吧！',
+      path: "/pages/index/index?teamid=" + teamid,
+      imageUrl: "https://i.loli.net/2020/02/17/WPYNQKZbRVqnkXm.png"
+    }
   }
 })
