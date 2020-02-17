@@ -26,7 +26,14 @@ Page({
     var that = this
     cweb.cpost('/addteam', {
       teamname: team
-    }).then(res => {})
+    }).then(res => {
+      wx: wx.reLaunch({
+        url: '/pages/index/index',
+        success: function(res) {},
+        fail: function(res) {},
+        complete: function(res) {},
+      })
+    })
   },
 
   bindname() {
@@ -78,7 +85,7 @@ Page({
    */
   onLoad: function(options) {
     jointeamid = options.teamid
-    console.log(jointeamid)
+    // console.log(jointeamid)
     var that = this
     cweb.cpost('/launch', {}, false).then(res => {
       // getApp().globalData.person = res

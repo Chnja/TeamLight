@@ -1,4 +1,4 @@
-const baseurl = 'http://127.0.0.1:5000'
+const baseurl = 'https://teamlight.chnja.cn'
 
 function cpost(url, data, loading = true) {
   return new Promise(function(resolve, reject) {
@@ -22,7 +22,7 @@ function cpost(url, data, loading = true) {
             if (loading) {
               wx: wx.hideLoading()
             }
-            console.log(res.data)
+            // console.log(res.data)
             if (res.data.code < 2000) {
               resolve(res.data)
             } else {
