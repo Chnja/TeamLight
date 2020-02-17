@@ -10,7 +10,7 @@
   <van-field custom-style='background-color:#f7f7f7' left-icon='manager' clearable placeholder="请输入称呼（≤6）" confirm-type="done" bind:confirm='bindname' maxlength='6' border="{{false}}" bind:change='inputchange' data-name='name' value="{{name}}" />
 </van-popup>
 
-<view style='margin:-40rpx 0 0'>
+<view style='margin:-20rpx 0 60rpx'>
   <van-dropdown-menu>
     <van-dropdown-item value="{{ teamid }}" bind:change='dropchange' options="{{ person.teamlist }}" />
   </van-dropdown-menu>
@@ -32,8 +32,9 @@
     <view class='icon'>
       <image src='/img/user.svg' style='width:100%;height:100%;margin-top:8rpx'></image>
     </view>
-    <view style='{{show.people[item].openid==person.openid?"color:#4b8bf4":""}}'>{{show.people[item].name}}</view>
+    <view>{{show.people[item].name}}</view>
+    <view class='me' wx:if="{{show.people[item].openid==person.openid}}">我</view>
   </view>
 </view>
 
-<view class='button' bindtap="bindbutton">{{show.peoplelist[0]==person.openid?"解散":"离开"}}团队</view>
+<view class='button' bindtap="bindbutton">{{show.owner==person.openid?"解散":"离开"}}团队</view>

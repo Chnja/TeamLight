@@ -8,9 +8,9 @@
 
 <!-- <view class='cardlist'> -->
 <!-- <view class='subtitle'>进行中</view> -->
-<van-divider contentPosition="left" custom-style='margin:30rpx 20rpx 0'>进行中</van-divider>
+<van-divider wx:if="{{unfinished.length>0}}" contentPosition="left" custom-style='margin:30rpx 20rpx 0'>进行中</van-divider>
 <van-swipe-cell right-width="{{ 65 }}" wx:for='{{unfinished}}' wx:key='index'>
-  <view class='card'>
+  <view class='card' bindtap="bindmission" data-id="{{item._id}}">
     <view class='titlebox'>
       <view class='title'>{{item.name}}</view>
       <view>{{item.date}}</view>
@@ -20,9 +20,9 @@
   <view slot="right" class="van-swipe-cell-right" bindtap="binddelete" data-id='{{item._id}}'>删除</view>
 </van-swipe-cell>
 
-<van-divider contentPosition="left" custom-style='margin:30rpx 20rpx 0'>已完成</van-divider>
+<van-divider wx:if="{{finished.length>0}}" contentPosition="left" custom-style='margin:30rpx 20rpx 0'>已完成</van-divider>
 <van-swipe-cell right-width="{{ 65 }}" wx:for='{{finished}}' wx:key='index'>
-  <view class='card delete'>
+  <view class='card delete' bindtap="bindmission" data-id="{{item._id}}">
     <view class='titlebox'>
       <view class='title'>{{item.name}}</view>
       <view>{{item.date}}</view>

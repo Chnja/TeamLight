@@ -10,7 +10,7 @@
   <view class='label'>任务详情
     <van-icon name="edit" size='0.8rem' />
   </view>
-  <view class='name'>这个任务要抓紧时间完成这个任务要strsrgdgfthfyufyfgjy抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成</view>
+  <text class='name'>这个任务要抓紧时间完成这个任务要strsrgdgfthfyufyfgjy抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成这个任务要抓紧时间完成</text>
 </view>
 <view class='detail'>
   <view class='label'>Tips</view>

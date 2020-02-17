@@ -16,6 +16,7 @@
   align-items: center;
   margin: 20rpx 0;
   border-radius: 10rpx;
+  position: relative;
 }
 
 .icon {
@@ -27,6 +28,13 @@
   border: 2px solid #bbbec4;
   overflow: hidden;
   margin-right: 20rpx;
+}
+
+.me {
+  position: absolute;
+  right: 20rpx;
+  color: #bbbec4;
+  font-weight: bold;
 }
 
 .button {

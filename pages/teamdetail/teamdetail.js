@@ -15,6 +15,25 @@ Page({
     team: ''
   },
 
+  bindbutton() {
+    var api = ""
+    if (this.data.show.peoplelist[0] == this.data.person.openid) {
+      api = '/delteam'
+    } else {
+      api = '/leaveteam'
+    }
+    cweb.cpost(api, {
+      teamid: teamid
+    }).then(res => {
+      wx: wx.reLaunch({
+        url: '/pages/index/index',
+        success: function(res) {},
+        fail: function(res) {},
+        complete: function(res) {},
+      })
+    })
+  },
+
   dropchange(e) {
     // console.log(e)
     teamid = e.detail
@@ -107,11 +126,11 @@ Page({
             }
           }
           if (!flag) {
-            wx: wx.redirectTo({
-              url: '/pages/team/team?teamid=' + teamid,
-              success: function(res) {},
-              fail: function(res) {},
-              complete: function(res) {},
+            wx: wx.reLaunch({
+              url: '/pages/index/index',
+              success: function (res) { },
+              fail: function (res) { },
+              complete: function (res) { },
             })
           }
           that.setData({

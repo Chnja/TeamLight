@@ -15,6 +15,15 @@ Page({
     team: {}
   },
 
+  bindmission(e) {
+    wx: wx.navigateTo({
+      url: '/pages/mission/mission?missionid=' + e.currentTarget.dataset.id,
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+
   bindteam() {
     wx: wx.navigateTo({
       url: '/pages/teamdetail/teamdetail?teamid=' + teamid,
