@@ -34,10 +34,7 @@
 
 ## 使用截图
 
-<img src="https://i.loli.net/2020/02/18/Xp51sVFnAyPYN4a.jpg" style='max-width:300px'></img>
-<img src="https://i.loli.net/2020/02/18/2d65gPKAZytIoRJ.jpg" style='max-width:300px'></img>
-<img src="https://i.loli.net/2020/02/18/j3SFqE6YuAtvxsW.jpg" style='max-width:300px'></img>
-
+<img src="https://i.loli.net/2020/02/18/2aDsNEHqWShXGwj.png" style='max-width:300px'></img>
 
 ## Todo
 
