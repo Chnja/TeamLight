@@ -9,7 +9,14 @@ Page({
   data: {
     loading: 0,
     name: "",
-    team: ''
+    team: '',
+    persondata: {}
+  },
+
+  teammode() {
+    this.setData({
+      loading: this.data.loading == 2 ? 3 : 2
+    })
   },
 
   inputchange(e) {
@@ -59,14 +66,25 @@ Page({
       cweb.cpost('/jointeam', {
         teamid: jointeamid
       }).then(res => {
-        wx: wx.redirectTo({
-          url: '/pages/team/team?teamid=' + jointeamid,
+        getApp().globalData.teamid = jointeamid
+        wx: wx.switchTab({
+          url: '/pages/team/team',
           success: function(res) {},
           fail: function(res) {},
           complete: function(res) {},
         })
       })
     }
+  },
+
+  bindteamcard(e) {
+    getApp().globalData.teamid = e.currentTarget.dataset.id
+    wx: wx.switchTab({
+      url: '/pages/team/team',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   },
 
   bindjoin() {
@@ -87,8 +105,11 @@ Page({
     jointeamid = options.teamid
     // console.log(jointeamid)
     var that = this
-    cweb.cpost('/launch', {}, false).then(res => {
+    cweb.cpost('/person', {}, false).then(res => {
       // getApp().globalData.person = res
+      that.setData({
+        persondata: res
+      })
       if (res.code == '1000') {
         that.setData({
           loading: 1
@@ -99,15 +120,18 @@ Page({
         if (jointeamid != undefined) {
           that.handlejoin()
         } else {
-          var teamid = wx.getStorageSync('teamid')
-          if ((teamid == '') | (res.teamidlist.indexOf(teamid) == -1)) {
-            teamid = res.teamidlist[0]
-          }
-          wx: wx.redirectTo({
-            url: '/pages/team/team?teamid=' + teamid,
-            success: function(res) {},
-            fail: function(res) {},
-            complete: function(res) {},
+          // var teamid = wx.getStorageSync('teamid')
+          // if ((teamid == '') | (res.teamidlist.indexOf(teamid) == -1)) {
+          //   teamid = res.teamidlist[0]
+          // }
+          // wx: wx.redirectTo({
+          //   url: '/pages/team/team?teamid=' + teamid,
+          //   success: function(res) {},
+          //   fail: function(res) {},
+          //   complete: function(res) {},
+          // })
+          that.setData({
+            loading: 3
           })
         }
       }

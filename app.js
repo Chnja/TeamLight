@@ -44,5 +44,6 @@ App({
   globalData: {
     // userInfo: null
     // person: {}
+    teamid: 1
   }
 })

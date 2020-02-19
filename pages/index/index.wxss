@@ -19,11 +19,12 @@
   margin: 40rpx 0;
   background-color: #f7f7f7;
   border-radius: 10rpx;
-  height: 80rpx;
+  /* height: 80rpx; */
   border: 2px solid #f7f7f7;
 }
 
 .button {
+  height: 80rpx;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,4 +37,12 @@
   margin-top: 60rpx;
   background-color: #f7f7f7;
   /* border-color: #ffcd43; */
+}
+
+.teamcard {
+  margin: 30rpx;
+  padding: 30rpx;
+  font-weight: bold;
+  border-radius: 15rpx;
+  box-shadow: 0 0 20rpx #dddee1;
 }

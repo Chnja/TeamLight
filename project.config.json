@@ -61,7 +61,7 @@
 					"id": 0,
 					"name": "team",
 					"pathName": "pages/team/team",
-					"query": "teamid=1",
+					"query": "",
 					"scene": null
 				},
 				{

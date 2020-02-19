@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "van-loading": "../../miniprogram_npm/@vant/weapp/loading/index"
+    "van-loading": "../../miniprogram_npm/@vant/weapp/loading/index",
+    "van-divider": "../../miniprogram_npm/@vant/weapp/divider/index"
   }
 }

@@ -36,8 +36,8 @@ Page({
   },
 
   bindteam() {
-    wx: wx.navigateTo({
-      url: '/pages/teamdetail/teamdetail?teamid=' + teamid,
+    wx: wx.switchTab({
+      url: '/pages/teamdetail/teamdetail',
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},
@@ -88,20 +88,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    teamid = options.teamid
-    wx: wx.setStorage({
-      key: 'teamid',
-      data: teamid,
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
+    teamid = getApp().globalData.teamid
+    // wx: wx.setStorage({
+    //   key: 'teamid',
+    //   data: teamid,
+    //   success: function(res) {},
+    //   fail: function(res) {},
+    //   complete: function(res) {},
+    // })
   },
 
   loadfun() {
     var that = this
     return new Promise(function(resolve, reject) {
-      cweb.cpost('/teamdetail', {
+      cweb.cpost('/team', {
         teamid: teamid
       }).then(res => {
         if (res.code == 1000) {

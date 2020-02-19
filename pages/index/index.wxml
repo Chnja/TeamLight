@@ -14,9 +14,21 @@
 <view class='namepage' wx:elif="{{loading==2}}">
   <image src='/img/team.svg' style='width:8rem;height:8rem'></image>
   <view class='line' style='margin-top:100rpx;'>
-    <van-field custom-style='background-color:#f7f7f7;padding-left:20rpx' left-icon='/img/teamicon.svg' clearable placeholder="团队名（≤10）" confirm-type="done" bind:confirm='bindteam' maxlength='10' border="{{false}}" bind:change='inputchange'
-      data-name='team' value="{{team}}" right-icon='question-o' bind:click-icon='bindjoin'/>
+    <van-field custom-style='background-color:#f7f7f7;padding-left:20rpx' left-icon='/img/teamicon.svg' clearable placeholder="团队名（≤10）" confirm-type="done" bind:confirm='bindteam' maxlength='10' border="{{false}}" bind:change='inputchange' data-name='team'
+      value="{{team}}" right-icon='question-o' bind:click-icon='bindjoin' />
   </view>
   <view class='line button' bindtap="bindteam">创建一个团队</view>
   <view class='line button join' bindtap="bindjoin">加入一个团队</view>
+  <van-button wx:if='{{persondata.teamlist!=undefined&persondata.teamlist.length>0}}' icon='/img/team.svg' custom-style='margin-top:40rpx;' bind:click='teammode'>查看我的团队</van-button>
+</view>
+
+<view wx:elif="{{loading==3}}" style='text-align:center'>
+  <van-divider bindtap='bindline' contentPosition="right" custom-style='margin:30rpx 20rpx 0'>团队列表</van-divider>
+  <view wx:for="{{persondata.teamlist}}" wx:key='_id' class='teamcard' bindtap='bindteamcard' data-id='{{item._id}}'>{{item.name}}</view>
+  <!-- <view>
+    <image src='/img/team.svg' style='width:4rem;height:4rem'></image>
+    <view></view>
+  </view> -->
+  <!-- <view class='line button' bindtap="bindteam">创建一个团队</view> -->
+  <van-button icon='/img/team.svg' custom-style='margin-top:40rpx;' bind:click='teammode'>创建一个团队</van-button>
 </view>

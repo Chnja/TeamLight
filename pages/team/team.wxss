@@ -37,7 +37,7 @@
   margin: 20rpx 20rpx;
   border-radius: 15rpx;
   box-shadow: 0 0 20rpx #dddee1;
-  padding: 20rpx 30rpx;
+  padding: 30rpx;
 }
 
 .delete {
@@ -56,6 +56,12 @@
   font-weight: bold;
 }
 
+.time {
+  margin: 10rpx 0;
+  font-size: 0.8rem;
+  color: #bbbec4;
+}
+
 .detail {
   font-size: 0.8rem;
   color: #80848f;
@@ -63,21 +69,34 @@
   text-align: justify;
   /* white-space: nowrap; */
   overflow: hidden;
-  margin: 20rpx 0;
+  /* margin: 20rpx 0; */
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 
 .van-swipe-cell-right {
-  width: 65px;
+  width: 80px;
   height: 100%;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
-  align-items: center;
-  color: #dd5246;
   font-weight: bold;
-  /* background-color: #dd5246; */
+  align-items: center;
+}
+
+.van-swipe-cell-right.celldelete {
+  color: #dd5246;
+  background-color: #dd524622;
+}
+
+.van-swipe-cell-right.cellfinish {
+  color: #16a05d;
+  background-color: #16a05d22;
+}
+
+.van-swipe-cell-right.cellunfinish {
+  color: #ffcd42;
+  background-color: #ffcd4222;
 }
 
 .buttonarea {

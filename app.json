@@ -3,12 +3,13 @@
     "pages/index/index",
     "pages/team/team",
     "pages/teamdetail/teamdetail",
-    "pages/mission/mission"
+    "pages/mission/mission",
+    "pages/me/me"
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "团队协作Light",
+    "navigationBarTitleText": "团队协作Lite",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
@@ -16,5 +17,29 @@
     "van-field": "/miniprogram_npm/@vant/weapp/field/index",
     "van-button": "/miniprogram_npm/@vant/weapp/button/index",
     "van-icon": "/miniprogram_npm/@vant/weapp/icon/index"
+  },
+  "tabBar": {
+    "color": "#dbdbdb",
+    "selectedColor": "#333",
+    "list": [
+      {
+        "selectedIconPath": "img/teams.png",
+        "iconPath": "img/team.png",
+        "pagePath": "pages/teamdetail/teamdetail",
+        "text": "团队"
+      },
+      {
+        "selectedIconPath": "img/missions.png",
+        "iconPath": "img/mission.png",
+        "pagePath": "pages/team/team",
+        "text": "任务"
+      },
+      {
+        "selectedIconPath": "img/mes.png",
+        "iconPath": "img/me.png",
+        "pagePath": "pages/me/me",
+        "text": "其他"
+      }
+    ]
   }
 }
