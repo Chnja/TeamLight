@@ -1,1 +1,13 @@
 /* pages/me/me.wxss */
+
+.page {
+  margin: 40rpx 10rpx;
+}
+
+.chat {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  opacity: 0;
+}

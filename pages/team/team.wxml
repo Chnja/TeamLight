@@ -2,7 +2,7 @@
 <!-- <text>pages/team/team.wxml</text> -->
 <view class='teamcard' bindtap="bindteam">
   <view class='teamlabel'>Team:</view>
-  <view class='teamname'>{{team.name}}（{{team.peoplelist.length}}）</view>
+  <view class='teamname'>{{team.name}}{{team.name!=undefined?'（'+team.peoplelist.length+'）':'　'}}</view>
   <van-icon name="weapp-nav" custom-class='more' />
 </view>
 

@@ -1,2 +1,13 @@
 <!--pages/me/me.wxml-->
-<text>pages/me/me.wxml</text>
+<!-- <text>pages/me/me.wxml</text> -->
+<view class='page'>
+  <van-field value="{{person.name}}" label="称呼" clickable clearable focus="{{input}}" readonly="{{!input}}" left-icon="manager" input-align="right" placeholder="请输入称呼（≤6）" bindtap="bindname" bind:confirm='confirmname'/>
+  <van-field value="{{person.team}}" label="当前团队" is-link readonly left-icon="/img/teamicon.svg" input-align="right" bindtap='bindcreateteam' />
+  <view style='height:60rpx'></view>
+  <!-- <van-field label="关于" is-link readonly left-icon="star" /> -->
+  <van-field label="赞赏开发者" is-link readonly left-icon="good-job" bindtap='bindweapp' />
+  <view style='position:relative'>
+    <van-field label="联系开发者" is-link readonly left-icon="chat" />
+    <button class='chat' open-type='contact'>chat</button>
+  </view>
+</view>
