@@ -31,7 +31,7 @@ Page({
       return;
     }
     var that = this
-    cweb.cpost('/addteam', {
+    cweb.request('POST', '/team', {
       teamname: team
     }).then(res => {
       wx: wx.reLaunch({
@@ -49,7 +49,7 @@ Page({
       return;
     }
     var that = this
-    cweb.cpost('/personname', {
+    cweb.request('PUT', '/person', {
       name: name
     }).then(res => {
       that.handlejoin()
@@ -63,7 +63,7 @@ Page({
         loading: 2
       })
     } else {
-      cweb.cpost('/jointeam', {
+      cweb.request('PUT', '/team/join', {
         teamid: jointeamid
       }).then(res => {
         getApp().globalData.teamid = jointeamid
@@ -105,7 +105,7 @@ Page({
     jointeamid = options.teamid
     // console.log(jointeamid)
     var that = this
-    cweb.cpost('/person', {}, false).then(res => {
+    cweb.request('GET', '/person', {}, false).then(res => {
       // getApp().globalData.person = res
       that.setData({
         persondata: res

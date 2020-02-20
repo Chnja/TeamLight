@@ -1,7 +1,7 @@
 // const baseurl = 'https://teamlight.chnja.cn'
 const baseurl = 'http://localhost:5000'
 
-function cpost(url, data, loading = true) {
+function request(method, url, data = {}, loading = true) {
   return new Promise(function(resolve, reject) {
     if (loading) {
       wx.showLoading({
@@ -15,10 +15,7 @@ function cpost(url, data, loading = true) {
         wx: wx.request({
           url: baseurl + url,
           data: data,
-          header: {
-            "Content-Type": "application/x-www-form-urlencoded"
-          },
-          method: 'POST',
+          method: method,
           success: function(res) {
             if (loading) {
               wx: wx.hideLoading()
@@ -57,5 +54,5 @@ function cpost(url, data, loading = true) {
 
 
 module.exports = {
-  cpost: cpost,
+  request: request,
 }

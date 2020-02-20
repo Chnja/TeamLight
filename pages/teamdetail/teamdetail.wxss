@@ -1,5 +1,11 @@
 /* pages/teamdetail/teamdetail.wxss */
 
+Page {
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+}
+
 .detail {
   margin: 40rpx 60rpx;
 }
@@ -14,19 +20,18 @@
 .people {
   display: flex;
   align-items: center;
-  margin: 20rpx 0;
+  margin: 40rpx 0;
   border-radius: 10rpx;
   position: relative;
 }
 
 .icon {
-  width: 2rem;
-  height: 2rem;
-  /* padding-top: 10rpx; */
-  border-radius: 100%;
+  width: 1.2rem;
+  height: 1.2rem;
+  /* padding-top: 10rpx; *//* border-radius: 100%;
   background-color: #f3f3f3;
   border: 2px solid #bbbec4;
-  overflow: hidden;
+  overflow: hidden; */
   margin-right: 20rpx;
 }
 
@@ -38,7 +43,8 @@
 }
 
 .button {
-  margin: 60rpx;
+  margin: 40rpx 60rpx;
+  /* margin-top: 150rpx; */
   border-radius: 10rpx;
   height: 80rpx;
   display: flex;
@@ -47,4 +53,7 @@
   border-color: #eee;
   font-weight: bold;
   background-color: #eee;
+  position: absolute;
+  bottom: 0;
+  width: 630rpx;
 }

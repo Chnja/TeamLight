@@ -9,20 +9,21 @@ Page({
     teamid: '',
     show: {},
     person: {},
-    popup: false,
     popbottom: false,
-    name: '',
     team: ''
   },
 
   bindbutton() {
     var api = ""
+    var method = ''
     if (this.data.show.peoplelist[0] == this.data.person.openid) {
-      api = '/delteam'
+      method = 'DELETE'
+      api = '/team'
     } else {
-      api = '/leaveteam'
+      method = 'PUT'
+      api = '/team/leave'
     }
-    cweb.cpost(api, {
+    cweb.request(method, api, {
       teamid: teamid
     }).then(res => {
       wx: wx.reLaunch({
@@ -34,32 +35,9 @@ Page({
     })
   },
 
-  dropchange(e) {
-    // console.log(e)
-    teamid = e.detail
-    this.setData({
-      teamid: teamid
-    })
-    this.loadfun()
-  },
-
-  bindname() {
-    var that = this
-    cweb.cpost('/personname', {
-      name: this.data.name
-    }).then(res => {
-      that.setData({
-        popup: false,
-      })
-      that.loadperson().then(() => {
-        that.loadfun()
-      })
-    })
-  },
-
   bindteam() {
     var that = this
-    cweb.cpost('/teamname', {
+    cweb.request('PUT', '/team/name', {
       team: this.data.team,
       teamid: teamid
     }).then(res => {
@@ -69,13 +47,6 @@ Page({
       that.loadperson().then(() => {
         that.loadfun()
       })
-    })
-  },
-
-  bindup() {
-    this.setData({
-      popup: !this.data.popup,
-      name: this.data.person.name
     })
   },
 
@@ -96,18 +67,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    teamid = options.teamid
-    var that = this
-    this.loadperson().then(() => {
-      that.loadfun()
-    })
+    teamid = getApp().globalData.teamid
     // this.loadteam()
   },
 
   loadperson() {
     var that = this
     return new Promise(function(resolve, reject) {
-      cweb.cpost('/launch', {}).then(res => {
+      cweb.request('GET', '/person').then(res => {
         if (res.code == 1000) {
           wx: wx.redirectTo({
             url: '/pages/index/index',
@@ -146,7 +113,7 @@ Page({
   loadfun() {
     var that = this
     return new Promise(function(resolve, reject) {
-      cweb.cpost('/teampeople', {
+      cweb.request('GET', '/team', {
         'teamid': teamid
       }).then(res => {
         if (res.code == 1001) {
@@ -174,6 +141,10 @@ Page({
    */
   onShow: function() {
     wx.hideHomeButton()
+    var that = this
+    this.loadperson().then(() => {
+      that.loadfun()
+    })
   },
 
   /**

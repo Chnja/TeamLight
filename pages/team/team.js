@@ -18,7 +18,7 @@ Page({
   bindfinish(e) {
     // console.log(e.currentTarget.dataset.finish)
     var that = this
-    cweb.cpost('/missionfinish', {
+    cweb.request('PUT', '/mission/finish', {
       missionid: e.currentTarget.dataset.id,
       state: e.currentTarget.dataset.finish
     }).then(() => {
@@ -55,7 +55,7 @@ Page({
     var data = e.detail
     data.teamid = teamid
     var that = this
-    cweb.cpost('/addmission', data).then(res => {
+    cweb.request('POST', '/mission', data).then(res => {
       that.setData({
         popdata: {
           name: '',
@@ -69,7 +69,7 @@ Page({
 
   binddelete(e) {
     var that = this
-    cweb.cpost('/delmission', {
+    cweb.request('DELETE', '/mission', {
       id: e.currentTarget.dataset.id
     }).then(res => {
       that.loadfun()
@@ -101,7 +101,7 @@ Page({
   loadfun() {
     var that = this
     return new Promise(function(resolve, reject) {
-      cweb.cpost('/team', {
+      cweb.request('GET', '/team', {
         teamid: teamid
       }).then(res => {
         if (res.code == 1000) {
