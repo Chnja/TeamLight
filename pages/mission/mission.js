@@ -33,7 +33,7 @@ Page({
 
   bindfinish() {
     var that = this
-    cweb.cpost('/missionfinish', {
+    cweb.request('PUT', '/mission/finish', {
       state: 1,
       missionid: missionid
     }).then(() => {
@@ -43,7 +43,7 @@ Page({
 
   binddelete(e) {
     var that = this
-    cweb.cpost('/deltip', {
+    cweb.request('DELETE', '/tip', {
       missionid: missionid,
       tipdate: e.currentTarget.dataset.id
     }).then(() => {
@@ -53,7 +53,7 @@ Page({
 
   bindeditconfirm(e) {
     var that = this
-    cweb.cpost('/missionedit', {
+    cweb.request('PUT', '/mission/edit', {
       name: e.detail.name,
       detail: e.detail.detail,
       missionid: missionid
@@ -69,7 +69,7 @@ Page({
     var that = this
     // console.log(e.detail)
     var date = new Date()
-    cweb.cpost('/addtip', {
+    cweb.request('POST', '/tip', {
       missionid: missionid,
       tip: e.detail
     }).then(res => {
@@ -92,7 +92,7 @@ Page({
   loadfun() {
     var that = this
     return new Promise(function(resolve, reject) {
-      cweb.cpost('/teampeople', {
+      cweb.request('GET', '/team', {
         teamid: teamid
       }).then(res => {
         if (res.code == 1000) {
@@ -116,7 +116,7 @@ Page({
   loadfun2() {
     var that = this
     return new Promise(function(resolve, reject) {
-      cweb.cpost('/missiondetail', {
+      cweb.request('GET', '/mission', {
         missionid: missionid
       }).then(res => {
         if (res.code == 1000) {
