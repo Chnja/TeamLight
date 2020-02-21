@@ -36,8 +36,8 @@ Page({
   },
 
   bindteam() {
-    wx: wx.switchTab({
-      url: '/pages/teamdetail/teamdetail',
+    wx: wx.redirectTo({
+      url: '/pages/index/index',
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},
@@ -118,6 +118,10 @@ Page({
               }
             }
           }
+          wx.setTabBarBadge({
+            index: 1,
+            text: mine.length + ''
+          });
           res.peoplenum = Object.keys(res.people).length
           that.setData({
             finished: finished,

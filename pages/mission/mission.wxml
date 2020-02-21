@@ -13,6 +13,15 @@
   </view>
   <text class='name'>{{mission.detail}}</text>
 </view>
+<view class='detail' wx:if='{{mission.color>0}}'>
+  <view class='label'>标记颜色</view>
+  <view class='color' style='background-color:{{color[mission.color-1]}}'></view>
+</view>
+<view class='detail'>
+  <view class='label'>人员</view>
+  <text wx:for='{{mission.peoplename}}' class='name' wx:key='index'>{{item}}　</text>
+  <text class='name' wx:if='{{mission.peoplename.length==0}}'>全体成员</text>
+</view>
 <van-popup show="{{ popshow }}" position="top" round custom-style="height: 61.8%;" bind:close="bindedit">
   <view style='height:20rpx;'></view>
   <addmission id='addmission' bind:confirm="bindeditconfirm" name="{{popdata.name}}" detail="{{popdata.detail}}" bname='修改'></addmission>

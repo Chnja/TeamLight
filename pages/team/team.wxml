@@ -22,7 +22,7 @@
           <van-tag color='#bbbec4' size="large">{{team.people[item.author].name}}</van-tag>
         </view>
         <view class='time'>{{item.date}}</view>
-        <van-tag custom-class='ctag' size='medium' type='{{item==team.openid?"primary":""}}' plain wx:for="{{item.people}}" wx:key='index'>{{team.people[item].name}}</van-tag>
+        <van-tag custom-class='ctag' size='medium' type='{{item==team.openid?"primary":"default"}}' plain wx:for="{{item.people}}" wx:key='index'>{{team.people[item].name}}</van-tag>
         <text class='detail'>{{item.detail}}</text>
       </view>
       <view slot="right" style='height:100%'>

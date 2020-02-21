@@ -77,3 +77,9 @@ Page {
   bottom: 0;
   width: 630rpx;
 }
+
+.color {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 100%;
+}

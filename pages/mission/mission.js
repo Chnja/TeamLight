@@ -14,7 +14,8 @@ Page({
     popshow: false,
     tipshow: false,
     popdata: {},
-    tips: ""
+    tips: "",
+    color: ["#2d8cf0", "#19be6b", "#ff9900", "#ed3f14"]
   },
 
   bindedit() {
@@ -141,6 +142,10 @@ Page({
           mission.tiplist.sort(function(a, b) {
             return a.date - b.date
           })
+          mission.peoplename = []
+          for (i of mission.people) {
+            mission.peoplename.push(teampeople.people[i].name)
+          }
           that.setData({
             mission: mission
           })

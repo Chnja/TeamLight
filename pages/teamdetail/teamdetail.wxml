@@ -20,7 +20,7 @@
     <view class='me' wx:if="{{item.openid==show.openid}}">我</view>
   </view>
   <!-- <van-icon name="plus" size='1.2rem' /> -->
-  <van-button wx:if='{{show.peoplelist.length>=0}}' size='small' custom-style='color:black' color="#eeeeee" round icon='plus' open-type="share">添加成员</van-button>
+  <van-button size='small' custom-style='color:black' color="#eeeeee" round icon='plus' open-type="share">添加成员</van-button>
 </view>
 <view style='height:160rpx'></view>
 <view class='button' bindtap="bindbutton">{{show.owner==show.openid?"解散":"离开"}}团队</view>
