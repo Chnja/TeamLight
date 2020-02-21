@@ -1,8 +1,8 @@
 <!--pages/teamdetail/teamdetail.wxml-->
 <!-- <text>pages/teamdetail/teamdetail.wxml</text> -->
-<view class='detail' bindtap='{{show.owner==person.openid?"bindbottom":""}}'>
+<view class='detail' bindtap='{{show.owner==show.openid?"bindbottom":""}}'>
   <view class='label'>Team Name
-    <van-icon wx:if='{{show.owner==person.openid}}' name="edit" size='0.8rem' />
+    <van-icon wx:if='{{show.owner==show.openid}}' name="edit" size='0.8rem' />
   </view>
   <view class='name'>{{show.name}}</view>
 </view>
@@ -12,15 +12,15 @@
 </van-popup>
 <view class='detail'>
   <view class='label'>成员列表</view>
-  <view class='people' wx:for="{{show.peoplelist}}" wx:key="index">
+  <view class='people' wx:for="{{show.people}}" wx:key="index">
     <!-- <view class='icon'> -->
     <image src='/img/user.svg' class='icon'></image>
     <!-- </view> -->
-    <view>{{show.people[item].name}}</view>
-    <view class='me' wx:if="{{show.people[item].openid==person.openid}}">我</view>
+    <view>{{item.name}}</view>
+    <view class='me' wx:if="{{item.openid==show.openid}}">我</view>
   </view>
   <!-- <van-icon name="plus" size='1.2rem' /> -->
   <van-button wx:if='{{show.peoplelist.length>=0}}' size='small' custom-style='color:black' color="#eeeeee" round icon='plus' open-type="share">添加成员</van-button>
 </view>
 <view style='height:160rpx'></view>
-<view class='button' bindtap="bindbutton">{{show.owner==person.openid?"解散":"离开"}}团队</view>
+<view class='button' bindtap="bindbutton">{{show.owner==show.openid?"解散":"离开"}}团队</view>

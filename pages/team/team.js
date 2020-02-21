@@ -107,7 +107,7 @@ Page({
         if (res.code == 1000) {
           wx: wx.showModal({
             title: '提示',
-            content: '当前队伍已解散',
+            content: '当前队伍已解散或您已被移出队伍',
             showCancel: false,
             success: function(res) {
               if (res.confirm) {
@@ -135,6 +135,7 @@ Page({
               unfinished.push(x)
             }
           }
+          res.peoplenum = Object.keys(res.people).length
           that.setData({
             finished: finished,
             unfinished: unfinished,

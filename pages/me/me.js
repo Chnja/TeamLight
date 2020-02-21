@@ -62,10 +62,21 @@ Page({
           }
           reject()
         } else {
+          var flag = 0
           for (var i of res.teamlist) {
             if (i._id == teamid) {
               res.team = i.name
+              flag = 1
+              break
             }
+          }
+          if (flag == 0) {
+            wx: wx.reLaunch({
+              url: '/pages/index/index',
+              success: function(res) {},
+              fail: function(res) {},
+              complete: function(res) {},
+            })
           }
           that.setData({
             person: res

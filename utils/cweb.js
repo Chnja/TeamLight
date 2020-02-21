@@ -1,5 +1,5 @@
-const baseurl = 'https://teamlight.chnja.cn'
-// const baseurl = 'http://localhost:5000'
+// const baseurl = 'https://teamlight.chnja.cn'
+const baseurl = 'http://localhost:5000'
 
 function request(method, url, data = {}, loading = true) {
   return new Promise(function(resolve, reject) {
@@ -20,7 +20,7 @@ function request(method, url, data = {}, loading = true) {
             if (loading) {
               wx: wx.hideLoading()
             }
-            // console.log(res.data)
+            console.log(res.data)
             if (res.data.code < 2000) {
               resolve(res.data)
             } else {

@@ -8,7 +8,6 @@ Page({
   data: {
     teamid: '',
     show: {},
-    person: {},
     popbottom: false,
     team: ''
   },
@@ -16,7 +15,7 @@ Page({
   bindbutton() {
     var api = ""
     var method = ''
-    if (this.data.show.peoplelist[0] == this.data.person.openid) {
+    if (this.data.show.owner == this.data.show.openid) {
       method = 'DELETE'
       api = '/team'
     } else {
@@ -44,9 +43,7 @@ Page({
       that.setData({
         popbottom: false,
       })
-      that.loadperson().then(() => {
-        that.loadfun()
-      })
+      that.loadfun()
     })
   },
 
@@ -71,45 +68,6 @@ Page({
     // this.loadteam()
   },
 
-  loadperson() {
-    var that = this
-    return new Promise(function(resolve, reject) {
-      cweb.request('GET', '/person').then(res => {
-        if (res.code == 1000) {
-          wx: wx.redirectTo({
-            url: '/pages/index/index',
-            success: function(res) {},
-            fail: function(res) {},
-            complete: function(res) {},
-          })
-        }
-        else {
-          var flag = false
-          for (var i of res.teamlist) {
-            i.text = i.name
-            i.value = i._id
-            if (teamid == i._id) {
-              flag = true
-            }
-          }
-          if (!flag) {
-            wx: wx.reLaunch({
-              url: '/pages/index/index',
-              success: function(res) {},
-              fail: function(res) {},
-              complete: function(res) {},
-            })
-          }
-          that.setData({
-            person: res,
-            teamid: teamid * 1
-          })
-          resolve()
-        }
-      })
-    })
-  },
-
   loadfun() {
     var that = this
     return new Promise(function(resolve, reject) {
@@ -122,7 +80,23 @@ Page({
           })
           resolve()
         } else {
-          that.loadperson()
+          wx: wx.showModal({
+            title: '提示',
+            content: '当前队伍已解散或您已被移出队伍',
+            showCancel: false,
+            success: function(res) {
+              if (res.confirm) {
+                wx: wx.reLaunch({
+                  url: '/pages/index/index',
+                  success: function(res) {},
+                  fail: function(res) {},
+                  complete: function(res) {},
+                })
+              }
+            },
+            fail: function(res) {},
+            complete: function(res) {},
+          })
           reject()
         }
       })
@@ -142,9 +116,7 @@ Page({
   onShow: function() {
     wx.hideHomeButton()
     var that = this
-    this.loadperson().then(() => {
-      that.loadfun()
-    })
+    this.loadfun()
   },
 
   /**
@@ -167,11 +139,9 @@ Page({
   onPullDownRefresh: function() {
     wx.showNavigationBarLoading()
     var that = this
-    this.loadperson().then(() => {
-      that.loadfun().then(() => {
-        wx.stopPullDownRefresh()
-        wx.hideNavigationBarLoading()
-      })
+    this.loadfun().then(() => {
+      wx.stopPullDownRefresh()
+      wx.hideNavigationBarLoading()
     })
   },
 
