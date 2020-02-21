@@ -33,6 +33,7 @@ function request(method, url, data = {}, loading = true) {
             }
           },
           fail: function(res) {
+            console.log(res)
             if (loading) {
               wx: wx.hideLoading()
             }

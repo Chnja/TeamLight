@@ -8,11 +8,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    popshow: false,
-    popdata: [],
     finished: [],
-    unfinished: {},
-    team: {}
+    unfinished: [],
+    mine: [],
+    team: {},
+    color: ["#2d8cf0", "#19be6b", "#ff9900", "#ed3f14"]
   },
 
   bindfinish(e) {
@@ -45,25 +45,11 @@ Page({
   },
 
   bindadd() {
-    this.setData({
-      popshow: !this.data.popshow
-    })
-  },
-
-  bindaddmission(e) {
-    // console.log(e.detail)
-    var data = e.detail
-    data.teamid = teamid
-    var that = this
-    cweb.request('POST', '/mission', data).then(res => {
-      that.setData({
-        popdata: {
-          name: '',
-          detail: ''
-        },
-        popshow: false
-      })
-      that.loadfun()
+    wx: wx.navigateTo({
+      url: '/pages/addmission/addmission',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
     })
   },
 
@@ -79,7 +65,7 @@ Page({
   bindline() {
     wx: wx.showModal({
       title: '提示',
-      content: '长按快速切换任务状态，左划删除任务',
+      content: '左划展开任务操作',
       showCancel: false,
     })
   },
@@ -89,13 +75,6 @@ Page({
    */
   onLoad: function(options) {
     teamid = getApp().globalData.teamid
-    // wx: wx.setStorage({
-    //   key: 'teamid',
-    //   data: teamid,
-    //   success: function(res) {},
-    //   fail: function(res) {},
-    //   complete: function(res) {},
-    // })
   },
 
   loadfun() {
@@ -127,18 +106,23 @@ Page({
         else {
           var finished = []
           var unfinished = []
+          var mine = []
           for (var x of res.missionlist) {
             x.date = util.formatTime(new Date(x.time * 1000))
             if (x.finish == 1) {
               finished.push(x)
             } else {
               unfinished.push(x)
+              if (x.people.length == 0 | x.people.indexOf(res.openid) > -1) {
+                mine.push(x)
+              }
             }
           }
           res.peoplenum = Object.keys(res.people).length
           that.setData({
             finished: finished,
             unfinished: unfinished,
+            mine: mine,
             team: res
           })
           resolve()

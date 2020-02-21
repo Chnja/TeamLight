@@ -107,3 +107,21 @@
   height: 120rpx;
   justify-content: flex-end;
 }
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.color {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 100%;
+  margin-right: 15rpx;
+}
+
+.ctag {
+  margin-right: 10rpx;
+  margin-bottom: 10rpx;
+}

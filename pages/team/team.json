@@ -4,7 +4,9 @@
     "van-popup": "../../miniprogram_npm/@vant/weapp/popup/index",
     "addmission": "../../cui/addmission/index",
     "van-divider": "../../miniprogram_npm/@vant/weapp/divider/index",
-    "van-tag": "../../miniprogram_npm/@vant/weapp/tag/index"
+    "van-tag": "../../miniprogram_npm/@vant/weapp/tag/index",
+    "van-tab": "../../miniprogram_npm/@vant/weapp/tab/index",
+    "van-tabs": "../../miniprogram_npm/@vant/weapp/tabs/index"
   },
   "enablePullDownRefresh": true
 }

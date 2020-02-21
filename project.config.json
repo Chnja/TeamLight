@@ -79,7 +79,7 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 3,
 					"name": "addmission",
 					"pathName": "pages/addmission/addmission",
 					"query": "",

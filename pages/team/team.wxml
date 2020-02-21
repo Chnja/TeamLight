@@ -8,47 +8,70 @@
 
 <!-- <view class='cardlist'> -->
 <!-- <view class='subtitle'>进行中</view> -->
-<van-divider bindtap='bindline' wx:if="{{unfinished.length>0}}" contentPosition="left" custom-style='margin:30rpx 20rpx 0'>进行中
-  <van-icon custom-style='margin-left:10rpx' name="question-o" /></van-divider>
-<van-swipe-cell right-width="{{ 160 }}" wx:for='{{unfinished}}' wx:key='index' disabled="{{team.openid!=item.author}}">
-  <view class='card' bindtap="bindmission" data-id="{{item._id}}">
-    <view class='titlebox'>
-      <view class='title'>{{item.name}}</view>
-      <van-tag color='#bbbec4' size="large">{{team.people[item.author].name}}</van-tag>
-    </view>
-    <view class='time'>{{item.date}}</view>
-    <text class='detail'>{{item.detail}}</text>
-  </view>
-  <view slot="right" style='height:100%'>
-    <view class="van-swipe-cell-right celldelete" bindtap="binddelete" data-id='{{item._id}}'>删除</view>
-    <view class="van-swipe-cell-right cellfinish" data-finish="1" bindtap="bindfinish" data-id='{{item._id}}'>完成</view>
-  </view>
-</van-swipe-cell>
+<van-tabs animated color='#333' swipeable>
+  <van-tab title="全部任务">
+    <van-divider bindtap='bindline' wx:if="{{unfinished.length>0}}" contentPosition="left" custom-style='margin:20rpx 20rpx 0'>进行中
+      <van-icon custom-style='margin-left:10rpx' name="question-o" /></van-divider>
+    <van-swipe-cell right-width="{{ 160 }}" wx:for='{{unfinished}}' wx:key='index' disabled="{{team.openid!=item.author}}">
+      <view class='card' bindtap="bindmission" data-id="{{item._id}}">
+        <view class='titlebox'>
+          <view class='flex-center'>
+            <view class='color' wx:if='{{item.color>0}}' style='background-color:{{color[item.color-1]}}'></view>
+            <view class='title'>{{item.name}}</view>
+          </view>
+          <van-tag color='#bbbec4' size="large">{{team.people[item.author].name}}</van-tag>
+        </view>
+        <view class='time'>{{item.date}}</view>
+        <van-tag custom-class='ctag' size='medium' type='{{item==team.openid?"primary":""}}' plain wx:for="{{item.people}}" wx:key='index'>{{team.people[item].name}}</van-tag>
+        <text class='detail'>{{item.detail}}</text>
+      </view>
+      <view slot="right" style='height:100%'>
+        <view class="van-swipe-cell-right celldelete" bindtap="binddelete" data-id='{{item._id}}'>删除</view>
+        <view class="van-swipe-cell-right cellfinish" data-finish="1" bindtap="bindfinish" data-id='{{item._id}}'>完成</view>
+      </view>
+    </van-swipe-cell>
 
-<van-divider bindtap='bindline' wx:if="{{finished.length>0}}" contentPosition="left" custom-style='margin:30rpx 20rpx 0'>已完成
-  <van-icon custom-style='margin-left:10rpx' name="question-o" /></van-divider>
-<van-swipe-cell right-width="{{ 160 }}" wx:for='{{finished}}' wx:key='index' disabled="{{team.openid!=item.author}}">
-  <view class='card delete' bindtap="bindmission" data-id="{{item._id}}">
-    <view class='titlebox'>
-      <view class='title'>{{item.name}}</view>
-      <van-tag color='#dddee1' size="large">{{team.people[item.author].name}}</van-tag>
-    </view>
-    <view class='time' style='color:#dddee1'>{{item.date}}</view>
-    <text class='detail' style='color: #dddee1;'>{{item.detail}}</text>
-  </view>
-  <view slot="right" style='height:100%'>
-    <view class="van-swipe-cell-right celldelete" bindtap="binddelete" data-id='{{item._id}}'>删除</view>
-    <view class="van-swipe-cell-right cellunfinish" data-finish="0" bindtap="bindfinish" data-id='{{item._id}}'>取消完成</view>
-  </view>
-</van-swipe-cell>
+    <van-divider bindtap='bindline' wx:if="{{finished.length>0}}" contentPosition="left" custom-style='margin:30rpx 20rpx 0'>已完成
+      <van-icon custom-style='margin-left:10rpx' name="question-o" /></van-divider>
+    <van-swipe-cell right-width="{{ 160 }}" wx:for='{{finished}}' wx:key='index' disabled="{{team.openid!=item.author}}">
+      <view class='card delete' bindtap="bindmission" data-id="{{item._id}}">
+        <view class='titlebox'>
+          <view class='title'>{{item.name}}</view>
+          <van-tag color='#dddee1' size="large">{{team.people[item.author].name}}</van-tag>
+        </view>
+        <view class='time' style='color:#dddee1'>{{item.date}}</view>
+        <text class='detail' style='color: #dddee1;'>{{item.detail}}</text>
+      </view>
+      <view slot="right" style='height:100%'>
+        <view class="van-swipe-cell-right celldelete" bindtap="binddelete" data-id='{{item._id}}'>删除</view>
+        <view class="van-swipe-cell-right cellunfinish" data-finish="0" bindtap="bindfinish" data-id='{{item._id}}'>取消完成</view>
+      </view>
+    </van-swipe-cell>
+  </van-tab>
+  <van-tab title="我的任务">
+    <van-swipe-cell right-width="{{ 160 }}" wx:for='{{mine}}' wx:key='index' disabled="{{team.openid!=item.author}}">
+      <view class='card' bindtap="bindmission" data-id="{{item._id}}">
+        <view class='titlebox'>
+          <view class='flex-center'>
+            <view class='color' wx:if='{{item.color>0}}' style='background-color:{{color[item.color-1]}}'></view>
+            <view class='title'>{{item.name}}</view>
+          </view>
+          <van-tag color='#bbbec4' size="large">{{team.people[item.author].name}}</van-tag>
+        </view>
+        <view class='time'>{{item.date}}</view>
+        <van-tag custom-class='ctag' size='medium' type='{{item==team.openid?"primary":""}}' plain wx:for="{{item.people}}" wx:key='index'>{{team.people[item].name}}</van-tag>
+        <text class='detail'>{{item.detail}}</text>
+      </view>
+      <view slot="right" style='height:100%'>
+        <view class="van-swipe-cell-right celldelete" bindtap="binddelete" data-id='{{item._id}}'>删除</view>
+        <view class="van-swipe-cell-right cellfinish" data-finish="1" bindtap="bindfinish" data-id='{{item._id}}'>完成</view>
+      </view>
+    </van-swipe-cell>
+  </van-tab>
+</van-tabs>
 <!-- </view> -->
 
 <view style='height:140rpx;'></view>
 <view class='buttonarea'>
   <van-button bind:click='bindadd' round color="#80848f" type="default" icon='add'>添加任务</van-button>
 </view>
-
-<van-popup show="{{ popshow }}" position="bottom" round custom-style="height: 61.8%;" bind:close="bindadd">
-  <view style='height:60rpx;'></view>
-  <addmission id='addmission' bind:confirm="bindaddmission" name="{{popdata.name}}" detail="{{popdata.detail}}"></addmission>
-</van-popup>

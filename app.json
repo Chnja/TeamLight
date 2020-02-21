@@ -4,7 +4,8 @@
     "pages/team/team",
     "pages/teamdetail/teamdetail",
     "pages/mission/mission",
-    "pages/me/me"
+    "pages/me/me",
+    "pages/addmission/addmission"
   ],
   "window": {
     "backgroundTextStyle": "dark",

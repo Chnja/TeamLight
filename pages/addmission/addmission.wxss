@@ -1,0 +1,69 @@
+/* pages/addmission/addmission.wxss */
+
+Page {
+  min-height: 100vh;
+  top: 0;
+  width: 100vw;
+  position: absolute;
+}
+
+.main {
+  margin: 40rpx 60rpx;
+}
+
+.button {
+  position: absolute;
+  bottom: 0rpx;
+  margin: 40rpx 60rpx;
+  width: 630rpx;
+  border-radius: 10rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-color: #eee;
+  font-weight: bold;
+  background-color: #eee;
+}
+
+.line {
+  margin: 40rpx 0;
+  border-radius: 10rpx;
+  /* height: 90rpx; */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* border-color: #f7f7f7;
+  background-color: #f7f7f7; */
+  padding: 0 20rpx;
+}
+
+.color {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 100%;
+  opacity: 0.2;
+  margin: 0 15rpx;
+}
+
+.peoplecard {
+  /* background-color: #f7f7f7; */
+  margin: 40rpx 0;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  border: 2px solid #eee;
+}
+
+.peoplelist {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 20rpx;
+}
+
+.peopleitem {
+  /* padding: 5rpx 10rpx; *//* border-radius: 10rpx; *//* border: 1px solid #969799; *//* font-size: 0.8rem; */
+  margin: 10rpx;
+  margin-right: 1rem;
+}

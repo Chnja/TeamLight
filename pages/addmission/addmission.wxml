@@ -1,0 +1,39 @@
+<!--pages/addmission/addmission.wxml-->
+<!-- <text>pages/addmission/addmission.wxml</text> -->
+<view class='main'>
+  <van-field custom-style='background-color:#f7f7f7;padding-left:20rpx;margin:40rpx 0' left-icon='todo-list' clearable placeholder="任务名" maxlength='10' border="{{false}}" bind:change="onChange" data-name='name' value="{{name}}" />
+  <van-field custom-style='background-color:#f7f7f7;padding-left:20rpx;margin:40rpx 0' left-icon='wap-nav' clearable type='textarea' autosize show-confirm-bar='{{false}}' placeholder="任务详情" border="{{false}}" bind:change="onChange" data-name='detail' value="{{detail}}"
+  />
+
+  <view class='line'>
+    <view style='margin-right:20rpx;'>标记颜色</view>
+    <view class='color' wx:for='{{["#2d8cf0","#19be6b","#ff9900","#ed3f14"]}}' bindtap="bindcolor" data-index="{{index+1}}" wx:key='index' style='background-color:{{item}};{{colorchoose==(index+1)?"opacity: 1;":""}}'></view>
+  </view>
+
+  <van-field custom-style='background-color:#f7f7f7;margin:40rpx 0' input-align='right' readonly border="{{false}}" is-link label='截止时间' bindtap="bindtime" value='{{ddlshow}}' />
+  <van-popup show="{{ timeshow }}" position="bottom" bind:close="bindtime">
+    <van-datetime-picker min-date="{{now}}" value="{{now+1000*60*60*24}}" type="datetime" bind:confirm="ontimeconfirm" bind:cancel='bindtime' formatter="{{ formatter }}" filter="{{ filter }}" />
+  </van-popup>
+
+  <view class='peoplecard'>
+    <view style='font-weight:bold'>分配人员
+      <text style='font-weight:normal;font-size:0.8rem;color:#80848f'>*不勾选即为全部参与</text>
+    </view>
+    <!-- <view class='peoplelist'>
+      <view class='peopleitem' wx:for="{{team.people}}" wx:key='index'>{{item.name}}</view>
+    </view> -->
+
+    <van-checkbox-group value="{{ people }}" bind:change="onPeople">
+      <view class='peoplelist'>
+        <view class='peopleitem' wx:for="{{team.people}}" wx:key='index'>
+          <van-checkbox icon-size='1.2rem' name="{{item.openid}}">{{item.name}}
+          </van-checkbox>
+        </view>
+      </view>
+    </van-checkbox-group>
+
+  </view>
+
+</view>
+<view style='height:160rpx;'></view>
+<view class='button' bindtap="bindbutton">创建任务</view>
