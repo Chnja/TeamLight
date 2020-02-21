@@ -1,0 +1,37 @@
+/* pages/teamlist/teamlist.wxss */
+
+Page {
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+}
+
+.cardlist {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 20rpx;
+}
+
+.teamcard {
+  margin: 25rpx 0;
+  padding: 0 20rpx;
+  font-weight: bold;
+  border-radius: 15rpx;
+  /* box-shadow: 0 0 20rpx #dddee1; */
+  background-color: #f5f5f5;
+  width: 240rpx;
+  height: 140rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottombutton {
+  margin: 40rpx 60rpx;
+  /* height: 80rpx; */
+  position: absolute;
+  bottom: 0;
+  width: 630rpx;
+}

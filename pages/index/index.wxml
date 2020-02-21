@@ -21,17 +21,6 @@
   <view class='line button join' bindtap="bindjoin">加入一个团队</view>
 </view>
 
-<view wx:elif="{{loading==3}}" style='text-align:center'>
-  <van-divider bindtap='bindline' contentPosition="right" custom-style='margin:30rpx 20rpx 0'>团队列表</van-divider>
-  <view class='cardlist'>
-    <view wx:for="{{persondata.teamlist}}" wx:key='_id' class='teamcard' bindtap='bindteamcard' data-id='{{item._id}}'>
-      <text>{{item.name}}</text>
-    </view>
-    <view class='teamcard' style='height:0;margin:0;box-shadow:unset'>
-    </view>
-  </view>
-</view>
-
-<view class='bottombutton' wx:if="{{loading>=2}}">
-  <van-button wx:if='{{persondata.teamlist.length>0}}' block icon='/img/team.svg' bind:click='teammode'>{{loading==2?'查看我的':'创建一个'}}团队</van-button>
+<view class='bottombutton' wx:if="{{loading==2}}">
+  <van-button wx:if='{{persondata.teamlist.length>0}}' block icon='/img/team.svg' bind:click='teammode'>查看我的团队</van-button>
 </view>

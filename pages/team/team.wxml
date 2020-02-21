@@ -1,9 +1,11 @@
 <!--pages/team/team.wxml-->
 <!-- <text>pages/team/team.wxml</text> -->
-<view class='teamcard' bindtap="bindteam">
-  <view class='teamlabel'>Team:</view>
-  <view class='teamname'>{{team.name}}{{team.name!=undefined?'（'+team.peoplenum+'）':'　'}}</view>
-  <van-icon name="weapp-nav" custom-class='more' />
+<view class='teamtitle'>
+  <view class='teamcard' bindtap="bindteam">
+    <view class='teamname'>{{team.name}}{{team.name!=undefined?'（'+team.peoplenum+'）':'　'}}</view>
+    <van-icon name="weapp-nav" custom-class='more' />
+  </view>
+  <van-button size='normal' custom-style='color:black' color="#eeeeee" icon='plus' open-type="share">成员</van-button>
 </view>
 
 <!-- <view class='cardlist'> -->

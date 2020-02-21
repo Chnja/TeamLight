@@ -14,8 +14,11 @@ Page({
   },
 
   teammode() {
-    this.setData({
-      loading: this.data.loading == 2 ? 3 : 2
+    wx: wx.switchTab({
+      url: '/pages/teamlist/teamlist',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
     })
   },
 
@@ -77,16 +80,6 @@ Page({
     }
   },
 
-  bindteamcard(e) {
-    getApp().globalData.teamid = e.currentTarget.dataset.id
-    wx: wx.switchTab({
-      url: '/pages/team/team',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
-  },
-
   bindjoin() {
     wx: wx.showModal({
       title: '加入团队',
@@ -103,6 +96,7 @@ Page({
    */
   onLoad: function(options) {
     jointeamid = options.teamid
+    var mode = options.mode
     // console.log(jointeamid)
     var that = this
     cweb.request('GET', '/person', {}, false).then(res => {
@@ -119,20 +113,25 @@ Page({
       } else {
         if (jointeamid != undefined) {
           that.handlejoin()
-        } else {
-          // var teamid = wx.getStorageSync('teamid')
-          // if ((teamid == '') | (res.teamidlist.indexOf(teamid) == -1)) {
-          //   teamid = res.teamidlist[0]
-          // }
-          // wx: wx.redirectTo({
-          //   url: '/pages/team/team?teamid=' + teamid,
-          //   success: function(res) {},
-          //   fail: function(res) {},
-          //   complete: function(res) {},
-          // })
+        } else if (mode == 'create') {
           that.setData({
-            loading: 3
+            loading: 2
           })
+        } else {
+          var teamid = wx.getStorageSync('teamid')
+          if ((teamid == '') | (res.teamidlist.indexOf(teamid) == -1)) {
+            teamid = res.teamidlist[0]
+          }
+          getApp().globalData.teamid = teamid
+          wx: wx.switchTab({
+            url: '/pages/team/team',
+            success: function(res) {},
+            fail: function(res) {},
+            complete: function(res) {},
+          })
+          // that.setData({
+          //   loading: 3
+          // })
         }
       }
     })

@@ -5,7 +5,8 @@
     "pages/teamdetail/teamdetail",
     "pages/mission/mission",
     "pages/me/me",
-    "pages/addmission/addmission"
+    "pages/addmission/addmission",
+    "pages/teamlist/teamlist"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -26,7 +27,7 @@
       {
         "selectedIconPath": "img/teams.png",
         "iconPath": "img/team.png",
-        "pagePath": "pages/teamdetail/teamdetail",
+        "pagePath": "pages/teamlist/teamlist",
         "text": "团队"
       },
       {

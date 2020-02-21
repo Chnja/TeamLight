@@ -1,0 +1,14 @@
+<!--pages/teamlist/teamlist.wxml-->
+<!-- <text>pages/teamlist/teamlist.wxml</text> -->
+<van-divider bindtap='bindline' contentPosition="center" custom-style='margin:30rpx 20rpx 0'>团队列表</van-divider>
+<view class='cardlist'>
+  <view wx:for="{{persondata.teamlist}}" wx:key='_id' class='teamcard' bindtap='bindteamcard' data-id='{{item._id}}' style="{{teamid==item._id?'border:2px solid #bbbec4':''}}">
+    <text>{{item.name}}</text>
+  </view>
+  <view class='teamcard' style='height:0;margin:0;box-shadow:unset'>
+  </view>
+</view>
+
+<view class='bottombutton'>
+  <van-button block icon='/img/team.svg' bind:click='teammode'>创建一个团队</van-button>
+</view>

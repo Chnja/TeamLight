@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "van-divider": "../../miniprogram_npm/@vant/weapp/divider/index"
+  }
+}

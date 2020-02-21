@@ -1,11 +1,18 @@
 /* pages/team/team.wxss */
 
+.teamtitle {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 .teamcard {
+  width: 72%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 15rpx;
-  margin: 20rpx;
+  margin: 20rpx 0;
   background-color: #f6f6f6;
   border-radius: 10rpx;
   position: relative;

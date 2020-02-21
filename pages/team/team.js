@@ -36,8 +36,8 @@ Page({
   },
 
   bindteam() {
-    wx: wx.redirectTo({
-      url: '/pages/index/index',
+    wx: wx.navigateTo({
+      url: '/pages/teamdetail/teamdetail',
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},
@@ -75,6 +75,13 @@ Page({
    */
   onLoad: function(options) {
     teamid = getApp().globalData.teamid
+    wx: wx.setStorage({
+      key: 'teamid',
+      data: teamid,
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   },
 
   loadfun() {
@@ -118,10 +125,16 @@ Page({
               }
             }
           }
-          wx.setTabBarBadge({
-            index: 1,
-            text: mine.length + ''
-          });
+          if (mine.length > 0) {
+            wx.setTabBarBadge({
+              index: 1,
+              text: mine.length + ''
+            });
+          } else {
+            wx.removeTabBarBadge({
+              index: 1,
+            })
+          }
           res.peoplenum = Object.keys(res.people).length
           that.setData({
             finished: finished,
