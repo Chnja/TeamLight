@@ -1,5 +1,5 @@
-// const baseurl = 'https://teamlight.chnja.cn'
-const baseurl = 'http://localhost:5000'
+const baseurl = 'https://teamlight.chnja.cn'
+// const baseurl = 'http://localhost:5000'
 
 function request(method, url, data = {}, loading = true) {
   return new Promise(function(resolve, reject) {

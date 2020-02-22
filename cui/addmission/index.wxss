@@ -15,3 +15,23 @@
   font-weight: bold;
   background-color: #eee;
 }
+
+.line {
+  margin: 40rpx 0;
+  border-radius: 10rpx;
+  /* height: 90rpx; */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* border-color: #f7f7f7;
+  background-color: #f7f7f7; */
+  padding: 0 20rpx;
+}
+
+.color {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 100%;
+  opacity: 0.2;
+  margin: 0 15rpx;
+}

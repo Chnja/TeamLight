@@ -57,6 +57,7 @@ Page({
     cweb.request('PUT', '/mission/edit', {
       name: e.detail.name,
       detail: e.detail.detail,
+      color: e.detail.color,
       missionid: missionid
     }).then(res => {
       that.setData({

@@ -13,8 +13,10 @@
   </view>
   <text class='name'>{{mission.detail}}</text>
 </view>
-<view class='detail' wx:if='{{mission.color>0}}'>
-  <view class='label'>标记颜色</view>
+<view class='detail' wx:if='{{mission.color>0}}' bindtap="{{(mission.finish!=1)&(mission.author==mission.openid)?'bindedit':''}}">
+  <view class='label'>标记颜色
+    <van-icon wx:if="{{(mission.finish!=1)&(mission.author==mission.openid)}}" name="edit" size='0.8rem' />
+  </view>
   <view class='color' style='background-color:{{color[mission.color-1]}}'></view>
 </view>
 <view class='detail'>
@@ -24,7 +26,7 @@
 </view>
 <van-popup show="{{ popshow }}" position="top" round custom-style="height: 61.8%;" bind:close="bindedit">
   <view style='height:20rpx;'></view>
-  <addmission id='addmission' bind:confirm="bindeditconfirm" name="{{popdata.name}}" detail="{{popdata.detail}}" bname='修改'></addmission>
+  <addmission id='addmission' colorchoose="{{popdata.color}}" bind:confirm="bindeditconfirm" name="{{popdata.name}}" detail="{{popdata.detail}}" bname='修改'></addmission>
 </van-popup>
 
 <view class='detail'>

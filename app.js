@@ -7,7 +7,7 @@ App({
     // wx.setStorageSync('logs', logs)
 
     // 登录
-    wx.login({
+    // wx.login({
       // success: res => {
       //   // 发送 res.code 到后台换取 openId, sessionKey, unionId
       //   wx:wx.redirectTo({
@@ -17,7 +17,7 @@ App({
       //     complete: function(res) {},
       //   })
       // }
-    })
+    // })
     // 获取用户信息
     // wx.getSetting({
     //   success: res => {

@@ -4,5 +4,9 @@
   <van-field custom-style='background-color:#f7f7f7;padding-left:20rpx;margin:40rpx 0' left-icon='todo-list' clearable placeholder="任务名" maxlength='10' border="{{false}}" bind:change="onChange" data-name='name' value="{{name}}" />
   <van-field custom-style='background-color:#f7f7f7;padding-left:20rpx;margin:40rpx 0' left-icon='wap-nav' clearable type='textarea' autosize show-confirm-bar='{{false}}' placeholder="任务详情" border="{{false}}" bind:change="onChange" data-name='detail' value="{{detail}}"
   />
+  <view class='line'>
+    <view style='margin-right:20rpx;'>标记颜色</view>
+    <view class='color' wx:for='{{["#2d8cf0","#19be6b","#ff9900","#ed3f14"]}}' bindtap="bindcolor" data-index="{{index+1}}" wx:key='index' style='background-color:{{item}};{{colorchoose==(index+1)?"opacity: 1;":""}}'></view>
+  </view>
   <view class='button' bindtap="bindbutton">{{bname}}任务</view>
 </view>

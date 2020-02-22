@@ -12,9 +12,13 @@ Component({
       type: String,
       value: ""
     },
-    bname:{
+    bname: {
       type: String,
       value: "创建"
+    },
+    colorchoose: {
+      type: Number,
+      value: 0
     }
   },
 
@@ -29,6 +33,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    bindcolor(e) {
+      this.setData({
+        colorchoose: e.currentTarget.dataset.index
+      })
+    },
     onChange(e) {
       this.setData({
         [e.currentTarget.dataset.name]: e.detail
@@ -40,7 +49,8 @@ Component({
       } else {
         this.triggerEvent('confirm', {
           name: this.data.name,
-          detail: this.data.detail
+          detail: this.data.detail,
+          color: this.data.colorchoose
         });
       }
     }
